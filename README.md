@@ -29,6 +29,6 @@
   <img align="center" src="https://github-readme-stats.anuraghazra1.vercel.app/api/pin/?username=CThawngs&repo=Website-SuperCars-1-Page&theme=tokyonight" />
 </a>
 <!--Apple Store-->
-<a href="https://github.com/CThawngs/Website-SuperCars-1-Page">
+<a href="https://github.com/CThawngs/Apple-Store-Website">
   <img align="center" src="https://github-readme-stats.anuraghazra1.vercel.app/api/pin/?username=CThawngs&repo=Apple-Store-Website&theme=merko" />
 </a>

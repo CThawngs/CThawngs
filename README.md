@@ -32,3 +32,7 @@
 <a href="https://github.com/CThawngs/Apple-Store-Website">
   <img align="center" src="https://github-readme-stats.anuraghazra1.vercel.app/api/pin/?username=CThawngs&repo=Apple-Store-Website&theme=merko" />
 </a>
+<!--The Band-->
+<a href="https://github.com/CThawngs/The-Band">
+  <img align="center" src="https://github-readme-stats.anuraghazra1.vercel.app/api/pin/?username=CThawngs&repo=The-Band&theme=buefy" />
+</a>

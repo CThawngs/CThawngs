@@ -36,3 +36,7 @@
 <a href="https://github.com/CThawngs/The-Band">
   <img align="center" src="https://github-readme-stats.anuraghazra1.vercel.app/api/pin/?username=CThawngs&repo=The-Band&theme=buefy" />
 </a>
+<!--Women's Day-->
+<a href="https://github.com/CThawngs/Women-Day">
+  <img align="center" src="https://github-readme-stats.anuraghazra1.vercel.app/api/pin/?username=CThawngs&repo=Women-Day&theme=synthwave" />
+</a>

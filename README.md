@@ -40,3 +40,7 @@
 <a href="https://github.com/CThawngs/Women-Day">
   <img align="center" src="https://github-readme-stats.anuraghazra1.vercel.app/api/pin/?username=CThawngs&repo=Women-Day&theme=synthwave" />
 </a>
+<!--Netflix-->
+<a href="https://github.com/CThawngs/Netflix">
+  <img align="center" src="https://github-readme-stats.anuraghazra1.vercel.app/api/pin/?username=CThawngs&repo=Netflix&theme=Gradient" />
+</a>

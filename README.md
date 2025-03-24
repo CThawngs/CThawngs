@@ -61,5 +61,9 @@
 </a>
 <!--Netflix-->
 <a href="https://github.com/CThawngs/Netflix">
-  <img align="center" src="https://github-readme-stats.anuraghazra1.vercel.app/api/pin/?username=CThawngs&repo=Netflix&theme=Gradient" />
+  <img align="center" src="https://github-readme-stats.anuraghazra1.vercel.app/api/pin/?username=CThawngs&repo=Netflix&theme=omni" />
+</a>
+<!--Gemini Chatbot-->
+<a href="https://github.com/CThawngs/Gemini-Chatbot">
+  <img align="center" src="https://github-readme-stats.anuraghazra1.vercel.app/api/pin/?username=CThawngs&repo=Gemini-Chatbot&theme=onedark" />
 </a>

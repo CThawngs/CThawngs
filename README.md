@@ -67,3 +67,11 @@
 <a href="https://github.com/CThawngs/Gemini-Chatbot">
   <img align="center" src="https://github-readme-stats.anuraghazra1.vercel.app/api/pin/?username=CThawngs&repo=Gemini-Chatbot&theme=onedark" />
 </a>
+<!--Todo App-->
+<a href="https://github.com/CThawngs/Todo-App">
+  <img align="center" src="https://github-readme-stats.anuraghazra1.vercel.app/api/pin/?username=CThawngs&repo=Todo-App&theme=dark" />
+</a>
+<!--Nails - Hair Yến Nga-->
+<a href="https://github.com/CThawngs/Nails-Hair_Yen_Nga">
+  <img align="center" src="https://github-readme-stats.anuraghazra1.vercel.app/api/pin/?username=CThawngs&repo=Nails-Hair_Yen_Nga&theme=gruvbox_light" />
+</a>

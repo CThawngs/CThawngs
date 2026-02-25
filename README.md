@@ -1,4 +1,4 @@
-<h1 align="center">Hi 👋, I'm CThawngs</h1>
+<h1 align="center">Hi 👋, I'm Chi Thang (CThawngs)</h1>
 <h3 align="center">An AI Engineer (Fresher) from VietNam :></h3>
 
 ## 🌐Socials

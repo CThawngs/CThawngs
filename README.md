@@ -1,5 +1,4 @@
 <h1 align="center">Hi 👋, I'm Chi Thang (CThawngs)</h1>
-<h3 align="center">An AI Engineer (Fresher) from VietNam :></h3>
 
 ## 🌐Socials
 [![Instagram](https://img.shields.io/badge/Instagram-%23E4405F.svg?logo=Instagram&logoColor=white)](https://www.instagram.com/cthawngs2804/) 

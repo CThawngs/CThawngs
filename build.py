@@ -421,15 +421,17 @@ def make_experience(cfg):
 
 def make_skills(cfg):
     W, fs, h, gap, label_w = 860, 13, 30, 10, 150
-    y, out, idx = 14, [], 0
+    pad_x, top = 20, 18  # keep rows inset from the panel edge on every side
+    y, out, idx = top, [], 0
+    row_y = top
     groups = [g for g in cfg["skills"] if g.get("show", True)]
     for g in groups:
-        color, x, row_y = g["color"], label_w, y
-        out.append(f'<text x="0" y="{y + h / 2 + 4:.0f}" font-family="{MONO}" font-size="12.5" fill="{T["muted"]}">{esc(fit(g["group"], 12.5, label_w - 12))}</text>')
+        color, x, row_y = g["color"], pad_x + label_w, y
+        out.append(f'<text x="{pad_x}" y="{y + h / 2 + 4:.0f}" font-family="{MONO}" font-size="12.5" fill="{T["muted"]}">{esc(fit(g["group"], 12.5, label_w - 12))}</text>')
         for it in g["items"]:
             w = tw(it, fs, bold=True) + 42
-            if x + w > W:
-                x, row_y = label_w, row_y + h + gap
+            if x + w > W - pad_x:
+                x, row_y = pad_x + label_w, row_y + h + gap
             out.append(f'<g><rect x="{x:.0f}" y="{row_y}" width="{w:.0f}" height="{h}" rx="{h / 2}" fill="{color}" fill-opacity="0.12" stroke="{color}" stroke-opacity="0.55"/>'
                        f'<circle cx="{x + 14:.0f}" cy="{row_y + h / 2}" r="3" fill="{color}">'
                        + anim(f'animate attributeName="opacity" values="1;0.25;1" dur="3.2s" begin="{idx * 0.35:.2f}s" repeatCount="indefinite"') + "</circle>"
@@ -437,8 +439,14 @@ def make_skills(cfg):
             idx += 1
             x += w + gap
         y = row_y + h + 20
+    H = row_y + h + top  # mirror the top inset so the last row is not flush to the border
     label = "Skills: " + ", ".join(i for g in groups for i in g["items"])
-    write_svg("skills.svg", f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{y - 6}" viewBox="0 0 {W} {y - 6}" role="img" aria-label="{esc(label)}">{"".join(out)}</svg>')
+    # explicit dark panel: GitHub light theme would otherwise render near-white
+    # pill text on white and wash the whole section out
+    write_svg("skills.svg", f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" role="img" aria-label="{esc(label)}">'
+              f'<rect width="{W}" height="{H}" rx="12" fill="{T["panel"]}"/>'
+              f'<rect x="0.5" y="0.5" width="{W - 1}" height="{H - 1}" rx="12" fill="none" stroke="{T["border"]}"/>'
+              f'{"".join(out)}</svg>')
 
 
 FOLDER = ('<path fill="{c}" d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 1 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5Zm10.5-1h-8a1 1 0 0 0-1 1v6.708A2.486 2.486 0 0 1 4.5 9h8ZM5 12.25a.25.25 0 0 1 .25-.25h3.5a.25.25 0 0 1 .25.25v3.25a.25.25 0 0 1-.4.2l-1.45-1.087a.249.249 0 0 0-.3 0L5.4 15.7a.25.25 0 0 1-.4-.2Z"/>')

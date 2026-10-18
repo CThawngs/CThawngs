@@ -7,6 +7,7 @@
 <a href="https://www.instagram.com/cthawngs2804/"><img src="https://img.shields.io/badge/Instagram-%23E4405F.svg?style=for-the-badge&logo=Instagram&logoColor=white" alt="Instagram"></a>
 <a href="https://www.linkedin.com/in/cthawngs/"><img src="https://img.shields.io/badge/LinkedIn-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"></a>
 <a href="mailto:nguyenchithang2804@gmail.com"><img src="https://img.shields.io/badge/Email-%23D14836.svg?style=for-the-badge&logo=Gmail&logoColor=white" alt="Email"></a>
+<a href="https://nguyen-chi-thang-portfolio.vercel.app/"><img src="https://img.shields.io/badge/Portfolio-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white" alt="Portfolio"></a>
 
 <br><br>
 
@@ -27,6 +28,7 @@
 - 🤖 **Solo founder of the Zero ecosystem**: AI-powered tools for note-taking, decision support and content automation.
 - ⚡ I work *AI-native*: I design, direct and review with agents (Claude Code, Codex, Cursor...) and ship fast.
 - 🧪 Currently building **[Zero-Council](https://github.com/CThawngs/Zero-Council)**, a multi-agent AI decision-support web app.
+- 🌐 Full résumé, experience and certificates: **[nguyen-chi-thang-portfolio.vercel.app](https://nguyen-chi-thang-portfolio.vercel.app/)**.
 - 🤝 Open to **internships and collaborations**. The quickest way to reach me is by [email](mailto:nguyenchithang2804@gmail.com).
 
 <br>

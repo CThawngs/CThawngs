@@ -249,18 +249,22 @@ def make_card(height):
 # --------------------------------------------------------------------------
 def make_skills():
     W = 860
-    fs, pad_x, h, gap = 13, 13, 30, 10
+    fs, pad_x, h, gap = 13, 20, 30, 10
     label_w = 150
-    y = 14
+    # keep every row inset from the panel edge, or the group labels sit flush
+    # against the border and read as clipped
+    top = 18
+    x = pad_x
+    y = top
     out, idx = [], 0
     for group, color, items in SKILLS:
-        x = label_w
-        out.append(f'<text x="0" y="{y+h/2+4:.0f}" font-family="{MONO}" font-size="12.5" fill="{MUTED}">{escape(group)}</text>')
+        out.append(f'<text x="{pad_x}" y="{y+h/2+4:.0f}" font-family="{MONO}" font-size="12.5" fill="{MUTED}">{escape(group)}</text>')
         row_y = y
+        x = pad_x + label_w
         for it in items:
             w = len(it) * 7.9 + 40
-            if x + w > W:
-                x = label_w
+            if x + w > W - pad_x:
+                x = pad_x + label_w
                 row_y += h + gap
             begin = idx * 0.35  # pills are always visible; only the dot softly pulses
             idx += 1
@@ -272,7 +276,7 @@ def make_skills():
                        + f'<text x="{x+24:.0f}" y="{row_y+h/2+4.5}" font-family="{SANS}" font-size="{fs}" font-weight="600" fill="{TEXT}">{escape(it)}</text></g>')
             x += w + gap
         y = row_y + h + 20
-    H = y - 6
+    H = y + top - 6  # mirror the top inset so the last row is not flush to the border
     # explicit dark panel: GitHub light theme would otherwise render light text
     # on white and wash the whole section out
     svg = (f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H:.0f}" viewBox="0 0 {W} {H:.0f}" role="img" '
@@ -344,7 +348,7 @@ def make_footer():
     svg = f"""<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" role="img" aria-label="Thanks for visiting">
   <defs><linearGradient id="t" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="{TEAL}"/><stop offset="1" stop-color="{VIOLET}"/></linearGradient></defs>
   {wave(10, 0, TEAL, 0.18, 9, 70)}{wave(8, 2, BLUE, 0.20, 13, 82)}{wave(7, 4, VIOLET, 0.28, 17, 94)}
-  <text x="{W/2}" y="50" text-anchor="middle" font-family="{MONO}" font-size="15" fill="url(#t)">// thanks for stopping by — let's build something together ✦</text>
+  <text x="{W/2}" y="50" text-anchor="middle" font-family="{MONO}" font-size="15" fill="url(#t)">thanks for stopping by — let's build something together ✦</text>
 </svg>"""
     write(ASSETS / "footer.svg", svg)
 

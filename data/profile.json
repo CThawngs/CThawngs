@@ -21,6 +21,12 @@
       "url": "mailto:nguyenchithang2804@gmail.com",
       "color": "%23D14836",
       "logo": "Gmail"
+    },
+    {
+      "label": "Portfolio",
+      "url": "https://nguyen-chi-thang-portfolio.vercel.app/",
+      "color": "%23000000",
+      "logo": "vercel"
     }
   ],
   "roles": [
@@ -72,6 +78,7 @@
     "🤖 **Solo founder of the Zero ecosystem**: AI-powered tools for note-taking, decision support and content automation.",
     "⚡ I work *AI-native*: I design, direct and review with agents (Claude Code, Codex, Cursor...) and ship fast.",
     "🧪 Currently building **[Zero-Council](https://github.com/CThawngs/Zero-Council)**, a multi-agent AI decision-support web app.",
+    "🌐 Full résumé, experience and certificates: **[nguyen-chi-thang-portfolio.vercel.app](https://nguyen-chi-thang-portfolio.vercel.app/)**.",
     "🤝 Open to **internships and collaborations**. The quickest way to reach me is by [email](mailto:nguyenchithang2804@gmail.com)."
   ],
   "skills": [

@@ -273,8 +273,12 @@ def make_skills():
             x += w + gap
         y = row_y + h + 20
     H = y - 6
+    # explicit dark panel: GitHub light theme would otherwise render light text
+    # on white and wash the whole section out
     svg = (f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H:.0f}" viewBox="0 0 {W} {H:.0f}" role="img" '
            f'aria-label="Skills: {escape(", ".join(i for _, _, its in SKILLS for i in its))}">'
+           f'<rect width="{W}" height="{H:.0f}" rx="12" fill="#0b1020"/>'
+           f'<rect x="0.5" y="0.5" width="{W-1}" height="{H-1:.0f}" rx="12" fill="none" stroke="{BORDER}"/>'
            + "".join(out) + "</svg>")
     write(ASSETS / "skills.svg", svg)
 

@@ -222,26 +222,6 @@ def get_contributions(handle):
     return read_json(path, None)
 
 
-def get_repos(cfg):
-    path = DATA / "repos.json"
-    cache = read_json(path, {})
-    owner = cfg["repos_owner"]
-    if not OFFLINE:
-        headers = {"Accept": "application/vnd.github+json"}
-        if os.environ.get("GITHUB_TOKEN"):
-            headers["Authorization"] = "Bearer " + os.environ["GITHUB_TOKEN"]
-        for r in cfg["repos"]:
-            try:
-                j = json.loads(http_get(f"https://api.github.com/repos/{owner}/{r['name']}", headers))
-                cache[r["name"]] = {"description": j.get("description") or "", "language": j.get("language") or "",
-                                    "stars": j.get("stargazers_count", 0), "forks": j.get("forks_count", 0),
-                                    "is_template": bool(j.get("is_template"))}
-            except Exception as e:
-                warn(f"repo {r['name']}: {e} - using cache")
-        write_json(path, cache)
-    return cache
-
-
 # ----------------------------------------------------------------------------------------------
 # SVG: header
 # ----------------------------------------------------------------------------------------------
@@ -312,9 +292,9 @@ def make_header(cfg):
 
 
 # ----------------------------------------------------------------------------------------------
-# SVG: ASCII portrait + neofetch-style info card (same height so they line up in the table)
+# SVG: ASCII portrait + info card (same height so they line up in the table)
 # ----------------------------------------------------------------------------------------------
-CARD_W, CARD_FS, CARD_LH, CARD_Y0 = 540, 13, 26, 112
+CARD_W, CARD_FS, CARD_LH, CHROME_H = 540, 13, 30, 34
 PORTRAIT_CW, PORTRAIT_RH, PORTRAIT_PAD = 6.0, 9.6, 14
 
 
@@ -325,10 +305,9 @@ def make_portrait_and_card(cfg):
     pw = cols * PORTRAIT_CW + 28
     art_h = len(art) * PORTRAIT_RH + 2 * PORTRAIT_PAD + 22 + 34
     rows = cfg["info_card"]
-    y_pal = CARD_Y0 + len(rows) * CARD_LH + 14
-    H = round(max(art_h, y_pal + 40))
+    H = round(max(art_h, CHROME_H + len(rows) * CARD_LH + 60))
 
-    # ---- portrait
+    # ---- portrait: the art only, no filename label, no status caption
     clips, texts = [], []
     for i, line in enumerate(art):
         y = PORTRAIT_PAD + 22 + (i + 1) * PORTRAIT_RH - 2
@@ -340,23 +319,20 @@ def make_portrait_and_card(cfg):
             texts.append(f'<rect y="{y - PORTRAIT_RH + 1:.1f}" width="{PORTRAIT_CW}" height="{PORTRAIT_RH - 1}" fill="{T["teal"]}" opacity="0">'
                          f'<animate attributeName="x" from="{PORTRAIT_PAD}" to="{PORTRAIT_PAD + width}" begin="{begin:.2f}s" dur="0.9s" fill="freeze"/>'
                          f'<animate attributeName="opacity" values="0.9;0.9;0" keyTimes="0;0.97;1" begin="{begin:.2f}s" dur="0.9s" fill="freeze"/></rect>')
-    caption = fit(p["status"], 11.5, pw - 50)
     write_svg("ascii-portrait.svg", f"""<svg xmlns="http://www.w3.org/2000/svg" width="{pw:.0f}" height="{H}" viewBox="0 0 {pw:.0f} {H}" role="img" aria-label="ASCII portrait of {esc(p['name'])}">
   <defs>{''.join(clips)}<linearGradient id="pg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9be9ff"/><stop offset="1" stop-color="{T['violet']}"/></linearGradient></defs>
   <rect x="0.5" y="0.5" width="{pw - 1:.0f}" height="{H - 1}" rx="12" fill="{T['panel']}" stroke="{T['border']}"/>
   <circle cx="18" cy="17" r="4.5" fill="#ff5f56"/><circle cx="33" cy="17" r="4.5" fill="#ffbd2e"/><circle cx="48" cy="17" r="4.5" fill="#27c93f"/>
-  <text x="{pw - 14:.0f}" y="21" text-anchor="end" font-family="{MONO}" font-size="10.5" fill="{T['muted']}">portrait.txt</text>
-  <g font-family="{MONO}" font-size="10" fill="url(#pg)">{''.join(texts)}</g>
-  <circle cx="{PORTRAIT_PAD + 4}" cy="{H - 20}" r="4" fill="#27c93f">{anim('animate attributeName="opacity" values="1;0.3;1" dur="2s" repeatCount="indefinite"')}</circle>
-  <text x="{PORTRAIT_PAD + 14}" y="{H - 16}" font-family="{MONO}" font-size="11.5" fill="{T['muted']}">{esc(caption)}</text>
+  <g font-family="{MONO}" font-size="10" fill="url(#pg)">{"".join(texts)}</g>
 </svg>""")
 
-    # ---- info card
+    # ---- info card: just the key/value rows, centred between chrome bar and bottom
     x_key, x_val = 24, 126
     maxw = CARD_W - x_val - 18
+    y0 = CHROME_H + max((H - CHROME_H - len(rows) * CARD_LH) // 2, 24)
     out = []
     for i, (k, v) in enumerate(rows):
-        y, begin = CARD_Y0 + i * CARD_LH, 0.5 + i * 0.16
+        y, begin = y0 + i * CARD_LH, 0.5 + i * 0.16
         v2 = fit(v, CARD_FS, maxw)
         if v2 != v:
             warn(f"info_card '{k}' is too long and was shortened: {v}")
@@ -364,57 +340,20 @@ def make_portrait_and_card(cfg):
                    + anim(f'animate attributeName="opacity" from="0" to="1" begin="{begin:.2f}s" dur="0.45s" fill="freeze"')
                    + anim(f'animateTransform attributeName="transform" type="translate" from="-10 0" to="0 0" begin="{begin:.2f}s" dur="0.45s" fill="freeze"')
                    + f'<text x="{x_key}" y="{y}" fill="{T["teal"]}" font-weight="700">{esc(k)}</text><text x="{x_val}" y="{y}" fill="{T["text"]}">{esc(v2)}</text></g>')
-    pal = ["#ff5f56", "#ffbd2e", "#27c93f", T["teal"], T["blue"], T["violet"], T["pink"], T["text"]]
-    pal_svg = "".join(f'<rect x="{x_key + i * 30}" y="{y_pal}" width="26" height="14" rx="3" fill="{c}"/>' for i, c in enumerate(pal))
     label = f"{p['full_name']}, {p['role']}, {p['location']}"
     write_svg("info-card.svg", f"""<svg xmlns="http://www.w3.org/2000/svg" width="{CARD_W}" height="{H}" viewBox="0 0 {CARD_W} {H}" role="img" aria-label="{esc(label)}">
   <rect x="0.5" y="0.5" width="{CARD_W - 1}" height="{H - 1}" rx="12" fill="{T['panel']}" stroke="{T['border']}"/>
   <path d="M0.5 12.5a12 12 0 0 1 12-12H{CARD_W - 12.5}a12 12 0 0 1 12 12V34H0.5z" fill="#161b22"/>
   <circle cx="18" cy="17" r="4.5" fill="#ff5f56"/><circle cx="33" cy="17" r="4.5" fill="#ffbd2e"/><circle cx="48" cy="17" r="4.5" fill="#27c93f"/>
-  <text x="{CARD_W / 2}" y="21" text-anchor="middle" font-family="{MONO}" font-size="11" fill="{T['muted']}">{esc(p['handle'].lower())}@github: ~ — zsh</text>
   <g font-family="{MONO}" font-size="{CARD_FS}" xml:space="preserve">
-    <text x="{x_key}" y="56" fill="{T['muted']}"><tspan fill="{T['teal']}">$</tspan> neofetch</text>
-    <text x="{x_key}" y="{CARD_Y0 - 26}" fill="{T['violet']}" font-weight="700" font-size="14">{esc(p['handle'].lower())}@github</text>
-    <text x="{x_key}" y="{CARD_Y0 - 12}" fill="{T['muted']}" font-size="11">{'─' * 38}</text>
-    {''.join(out)}{pal_svg}
-    <text x="{x_key}" y="{min(y_pal + 38, H - 10)}" fill="{T['muted']}" font-size="12"><tspan fill="{T['teal']}">$</tspan> {esc(p['status'])}</text>
+    {''.join(out)}
   </g>
 </svg>""")
 
 
 # ----------------------------------------------------------------------------------------------
-# SVG: skills, cards
+# SVG: project cards
 # ----------------------------------------------------------------------------------------------
-def make_skills(cfg):
-    W, fs, h, gap, label_w = 860, 13, 30, 10, 150
-    pad_x, top = 20, 18  # keep rows inset from the panel edge on every side
-    y, out, idx = top, [], 0
-    row_y = top
-    groups = [g for g in cfg["skills"] if g.get("show", True)]
-    for g in groups:
-        color, x, row_y = g["color"], pad_x + label_w, y
-        out.append(f'<text x="{pad_x}" y="{y + h / 2 + 4:.0f}" font-family="{MONO}" font-size="12.5" fill="{T["muted"]}">{esc(fit(g["group"], 12.5, label_w - 12))}</text>')
-        for it in g["items"]:
-            w = tw(it, fs, bold=True) + 42
-            if x + w > W - pad_x:
-                x, row_y = pad_x + label_w, row_y + h + gap
-            out.append(f'<g><rect x="{x:.0f}" y="{row_y}" width="{w:.0f}" height="{h}" rx="{h / 2}" fill="{color}" fill-opacity="0.12" stroke="{color}" stroke-opacity="0.55"/>'
-                       f'<circle cx="{x + 14:.0f}" cy="{row_y + h / 2}" r="3" fill="{color}">'
-                       + anim(f'animate attributeName="opacity" values="1;0.25;1" dur="3.2s" begin="{idx * 0.35:.2f}s" repeatCount="indefinite"') + "</circle>"
-                       f'<text x="{x + 24:.0f}" y="{row_y + h / 2 + 4.5}" font-family="{SANS}" font-size="{fs}" font-weight="600" fill="{T["text"]}">{esc(it)}</text></g>')
-            idx += 1
-            x += w + gap
-        y = row_y + h + 20
-    H = row_y + h + top  # mirror the top inset so the last row is not flush to the border
-    label = "Skills: " + ", ".join(i for g in groups for i in g["items"])
-    # explicit dark panel: GitHub light theme would otherwise render near-white
-    # pill text on white and wash the whole section out
-    write_svg("skills.svg", f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" role="img" aria-label="{esc(label)}">'
-              f'<rect width="{W}" height="{H}" rx="12" fill="{T["panel"]}"/>'
-              f'<rect x="0.5" y="0.5" width="{W - 1}" height="{H - 1}" rx="12" fill="none" stroke="{T["border"]}"/>'
-              f'{"".join(out)}</svg>')
-
-
 FOLDER = ('<path fill="{c}" d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 1 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5Zm10.5-1h-8a1 1 0 0 0-1 1v6.708A2.486 2.486 0 0 1 4.5 9h8ZM5 12.25a.25.25 0 0 1 .25-.25h3.5a.25.25 0 0 1 .25.25v3.25a.25.25 0 0 1-.4.2l-1.45-1.087a.249.249 0 0 0-.3 0L5.4 15.7a.25.25 0 0 1-.4-.2Z"/>')
 
 
@@ -445,28 +384,6 @@ def project_card(proj, link_label):
              f'<text x="22" y="47" font-family="{MONO}" font-size="11" fill="{T["muted"]}">{esc(proj["date"])}</text>'
              f'{desc}{tags}<text x="{w - 22}" y="{h - 14}" text-anchor="end" font-family="{MONO}" font-size="12" fill="{T["teal"]}">{esc(link_label)} ↗</text>')
     return card_frame(w, h, f"{proj['title']}: {proj['description']}", inner, 7)
-
-
-def repo_card(name, meta, lang_colors):
-    w, h = 424, 124
-    desc_lines = wrap_px(meta["description"], 13, w - 44, max_lines=2) if meta["description"] else []
-    desc = "".join(f'<text x="22" y="{58 + i * 19}" font-family="{SANS}" font-size="13" fill="{T["muted"]}">{esc(l)}</text>' for i, l in enumerate(desc_lines))
-    tag = ""
-    if meta.get("is_template"):
-        tag = (f'<rect x="{w - 92}" y="14" width="70" height="20" rx="10" fill="none" stroke="{T["border"]}"/>'
-               f'<text x="{w - 57}" y="28" text-anchor="middle" font-family="{SANS}" font-size="11" fill="{T["muted"]}">Template</text>')
-    lang = meta.get("language") or ""
-    bottom = ""
-    x = 26
-    if lang:
-        bottom += (f'<circle cx="{x}" cy="{h - 22}" r="5.5" fill="{lang_colors.get(lang, T["muted"])}"/>'
-                   f'<text x="{x + 12}" y="{h - 17.5}" font-family="{SANS}" font-size="12" fill="{T["muted"]}">{esc(lang)}</text>')
-        x += 12 + tw(lang, 12) + 18
-    if meta.get("stars"):
-        bottom += f'<text x="{x}" y="{h - 17.5}" font-family="{SANS}" font-size="12" fill="{T["muted"]}">★ {meta["stars"]}</text>'
-    inner = (f'<text x="46" y="27" font-family="{SANS}" font-size="15" font-weight="700" fill="{T["blue"]}">{esc(name)}</text>{tag}{desc}{bottom}'
-             f'<text x="{w - 22}" y="{h - 17.5}" text-anchor="end" font-family="{MONO}" font-size="12" fill="{T["teal"]}">view repo ↗</text>')
-    return card_frame(w, h, f"Repository {name}: {meta['description']}", inner)
 
 
 def slug(s):
@@ -556,27 +473,21 @@ def grid(cards):
     return "<table>\n" + "\n".join(rows) + "\n</table>"
 
 
-def build_blocks(cfg, repo_meta):
+def build_blocks(cfg):
     badges = "\n".join(
         f'<a href="{esc(b["url"])}"><img src="https://img.shields.io/badge/{urllib.parse.quote(b["label"])}-%23{b["color"]}.svg?style=for-the-badge&logo={urllib.parse.quote(b["logo"])}&logoColor=white" alt="{esc(b["label"])}"></a>'
         for b in cfg["badges"])
-    owner = cfg["repos_owner"]
-    # portfolio projects and GitHub repos are one and the same showcase: one grid
-    cards = ([(p["url"] or cfg["links"]["portfolio"], f"assets/projects/{slug(p['title'])}.svg",
-               f"{p['title']}: {p['description']}") for p in cfg["projects"]]
-             + [(f"https://github.com/{owner}/{r['name']}", f"assets/repos/{r['name']}.svg",
-                 f"{r['name']}: {repo_meta[r['name']]['description']}") for r in cfg["repos"]])
-    highlights = "\n".join(f"- **{h['title']}** ({h['date']}): {h['note']}" for h in cfg["highlights"])
+    # the Projects grid shows the portfolio's featured projects, capped at 6
+    cards = [(p["url"] or cfg["links"]["portfolio"], f"assets/projects/{slug(p['title'])}.svg",
+              f"{p['title']}: {p['description']}") for p in cfg["projects"][:6]]
     trophies = ""
     if cfg["trophies"]["enabled"]:
         trophies = f'<br><br>\n\n<h3>GitHub Trophies</h3>\n\n<img src="{esc(cfg["trophies"]["url"])}" alt="GitHub trophies" width="860">'
     counter = ""
     if cfg["visit_counter"]["enabled"]:
         counter = f'<a href="{esc(cfg["visit_counter"]["link"])}"><img src="{esc(cfg["visit_counter"]["url"])}" alt="Profile views"></a>\n'
-    skills_alt = "Skills: " + ", ".join(i for g in cfg["skills"] if g.get("show", True) for i in g["items"])
     return {"badges": badges, "about": "\n".join("- " + a for a in cfg["about"]),
-            "skills_alt": esc(skills_alt), "cards_grid": grid(cards),
-            "highlights": highlights, "trophies": trophies, "counter": counter}
+            "cards_grid": grid(cards), "trophies": trophies, "counter": counter}
 
 
 def render_readme(cfg, blocks):
@@ -603,25 +514,14 @@ def main():
         sys.exit(f"profile.json error: {e.args[0]}")
     T = cfg["theme"]
     print("Building profile ...")
-    repo_meta = {}
-    cache = get_repos(cfg)
-    for r in cfg["repos"]:
-        m = dict(cache.get(r["name"], {}))
-        m.setdefault("description", "")
-        if not m["description"]:
-            m["description"] = r.get("fallback_description", "")
-        repo_meta[r["name"]] = m
 
     make_header(cfg)
     make_portrait_and_card(cfg)
-    make_skills(cfg)
-    for p in cfg["projects"]:
+    for p in cfg["projects"][:6]:
         write_svg(f"projects/{slug(p['title'])}.svg", project_card(p, "view repo" if p["url"] else "details on portfolio"))
-    for r in cfg["repos"]:
-        write_svg(f"repos/{r['name']}.svg", repo_card(r["name"], repo_meta[r["name"]], cfg["lang_colors"]))
     make_heatmap(get_contributions(cfg["person"]["handle"]) if not OFFLINE else read_json(DATA / "contributions.json", None))
     make_footer(cfg)
-    render_readme(cfg, build_blocks(cfg, repo_meta))
+    render_readme(cfg, build_blocks(cfg))
 
     for f in ASSETS.rglob("*.svg"):  # remove SVGs that are no longer produced (renamed/removed items)
         if f.resolve() not in WRITTEN:

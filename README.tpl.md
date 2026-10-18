@@ -22,12 +22,6 @@
 
 <div align="center">
 
-<h3>Skills</h3>
-
-<img src="assets/skills.svg" width="860" alt="{{@skills_alt}}">
-
-<br><br>
-
 <h3>Projects</h3>
 
 {{@cards_grid}}

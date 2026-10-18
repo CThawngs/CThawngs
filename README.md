@@ -25,23 +25,12 @@
 
 <div align="center">
 
-<h3>Skills</h3>
-
-<img src="assets/skills.svg" width="860" alt="Skills: C# (.Net), C, C++, JavaScript, PHP, Python, Java, ReactJS, Next.js 15, HTML, CSS, Tailwind CSS, RESTful APIs, MySQL, SQLite, n8n, Make, Git, GitHub, GitHub Actions (CI/CD), Notion API, AI Agent, Canva, Adobe Photoshop, Google Stitch, AI for Creative">
-
-<br><br>
-
 <h3>Projects</h3>
 
 <table>
   <tr><td><a href="https://github.com/CThawngs/Disk-Cleaner-MCP"><img src="assets/projects/disk-cleaner-mcp.svg" width="424" alt="Disk Cleaner MCP: A Rust-based MCP server that gives AI agents (Hermes, Claude, Cursor, OpenClaw, Codex) the ability to scan, analyze, organize and safely clean junk files on Windows, macOS and Linux."></a></td><td><a href="https://github.com/CThawngs/Zero-AI-Note"><img src="assets/projects/zero-ai-note.svg" width="424" alt="Zero AI Note: Next-generation intelligent knowledge note platform: multi-modal AI Agent models automatically analyze, extract and convert mixed documents into deeply structured note systems for learning, research and knowledge management."></a></td></tr>
   <tr><td><a href="https://github.com/CThawngs/Portfolio"><img src="assets/projects/portfolio.svg" width="424" alt="Portfolio: Fully automated AI-powered CMS that turns a Notion database into a live portfolio website — add a project in Notion and it appears, translated into English and Vietnamese by an AI bot."></a></td><td><a href="https://github.com/CThawngs/Custom-Dataset-Deep-Learning"><img src="assets/projects/custom-dataset-deep-learning.svg" width="424" alt="Custom Dataset Deep Learning: Custom dataset exercise for image recognition (animals): build the dataset myself instead of using a pre-made template — assignment from the Deep Learning cơ bản course by Việt Nguyễn AI."></a></td></tr>
   <tr><td><a href="https://github.com/CThawngs/Recognition-Exercise-Deep-Learning-"><img src="assets/projects/recognition-exercise-deep-learning.svg" width="424" alt="Recognition Exercise Deep Learning: Baseline image recognition on Google QuickDraw 28×28 data using average-image prototypes and dot-product similarity — first assignment of the Deep Learning for Computer Vision course."></a></td><td><a href="https://github.com/CThawngs/The-Turning-Point-Game"><img src="assets/projects/the-turning-point-game-website.svg" width="424" alt="The Turning Point Game Website: Pixel-art life simulation game vibe-coded with Google Antigravity during Lunar New Year (Tet) 2026: balance career, mental health and relationships through narrative choices."></a></td></tr>
-  <tr><td><a href="https://github.com/CThawngs/Zero-Council"><img src="assets/repos/Zero-Council.svg" width="424" alt="Zero-Council: Multi-agent AI decision-support web app."></a></td><td><a href="https://github.com/CThawngs/Netflix"><img src="assets/repos/Netflix.svg" width="424" alt="Netflix: Modern, responsive Netflix clone showcasing dynamic design and AI-enhanced coding"></a></td></tr>
-  <tr><td><a href="https://github.com/CThawngs/Gemini-Chatbot"><img src="assets/repos/Gemini-Chatbot.svg" width="424" alt="Gemini-Chatbot: This is a website that integrates AI chatbot by calling its API"></a></td><td><a href="https://github.com/CThawngs/Calculator"><img src="assets/repos/Calculator.svg" width="424" alt="Calculator: Calculator Website: A user-friendly web app for quick and basic arithmetic calculations, including addition, subtraction, multiplication, and division."></a></td></tr>
-  <tr><td><a href="https://github.com/CThawngs/Apple-Store-Website"><img src="assets/repos/Apple-Store-Website.svg" width="424" alt="Apple-Store-Website: This is just web design code according to the Apple Store website"></a></td><td><a href="https://github.com/CThawngs/Website-SuperCars-1-Page"><img src="assets/repos/Website-SuperCars-1-Page.svg" width="424" alt="Website-SuperCars-1-Page: One-page SuperCars website built with HTML."></a></td></tr>
-  <tr><td><a href="https://github.com/CThawngs/The-Band"><img src="assets/repos/The-Band.svg" width="424" alt="The-Band: Responsive band website built with HTML and CSS."></a></td><td><a href="https://github.com/CThawngs/Nails-Hair_Yen_Nga"><img src="assets/repos/Nails-Hair_Yen_Nga.svg" width="424" alt="Nails-Hair_Yen_Nga: This is a practical nails-hair website I developed for my client"></a></td></tr>
-  <tr><td><a href="https://github.com/CThawngs/Todo-App"><img src="assets/repos/Todo-App.svg" width="424" alt="Todo-App: This is the first task using ReactJS in my internship"></a></td><td><a href="https://github.com/CThawngs/Women-Day"><img src="assets/repos/Women-Day.svg" width="424" alt="Women-Day: Happy October 20th with image of glowing pink clouds and hearts falling like rain."></a></td></tr>
 </table>
 
 <br>

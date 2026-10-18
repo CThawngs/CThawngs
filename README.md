@@ -1,49 +1,85 @@
-<h1 align="center">Hi 👋, I'm Chi Thang (CThawngs)</h1>
+<div align="center">
 
-## 🌐Socials
-[![Instagram](https://img.shields.io/badge/Instagram-%23E4405F.svg?logo=Instagram&logoColor=white)](https://www.instagram.com/cthawngs2804/) 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/cthawngs/)
-[![Email](https://img.shields.io/badge/Email-%23D14836.svg?logo=Gmail&logoColor=white)](mailto:nguyenchithang2804@gmail.com)
+<img src="assets/header.svg" width="100%" alt="Chí Thắng (CThawngs) — Solo AI Product Builder · Full-stack Web Developer">
+
+<br>
+
+<a href="https://www.instagram.com/cthawngs2804/"><img src="https://img.shields.io/badge/Instagram-%23E4405F.svg?style=for-the-badge&logo=Instagram&logoColor=white" alt="Instagram"></a>
+<a href="https://www.linkedin.com/in/cthawngs/"><img src="https://img.shields.io/badge/LinkedIn-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"></a>
+<a href="mailto:nguyenchithang2804@gmail.com"><img src="https://img.shields.io/badge/Email-%23D14836.svg?style=for-the-badge&logo=Gmail&logoColor=white" alt="Email"></a>
+
 <br><br>
 
-## 🏆GitHub Trophies
-![](https://github-trophies.vercel.app/?username=CThawngs&theme=radical&no-frame=false&no-bg=false&margin-w=4)
+<table>
+  <tr>
+    <td valign="top"><img src="assets/ascii-portrait.svg" alt="ASCII portrait of Chí Thắng"></td>
+    <td valign="top"><img src="assets/info-card.svg" alt="Chí Thắng — Solo AI product builder and student in Ho Chi Minh City, Vietnam"></td>
+  </tr>
+</table>
 
-[![](https://visitcount.itsvg.in/api?id=CThawngs&icon=1&color=8)](https://visitcount.itsvg.in)
+</div>
 
-<!--Calculator-->
-<a href="https://github.com/CThawngs/Calculator">
-  <img align="center" src="https://github-readme-stats.anuraghazra1.vercel.app/api/pin/?username=CThawngs&repo=Calculator&theme=radical" />
-</a>
-<!--Supercars (1 page)-->
-<a href="https://github.com/CThawngs/Website-SuperCars-1-Page">
-  <img align="center" src="https://github-readme-stats.anuraghazra1.vercel.app/api/pin/?username=CThawngs&repo=Website-SuperCars-1-Page&theme=tokyonight" />
-</a>
-<!--Apple Store-->
-<a href="https://github.com/CThawngs/Apple-Store-Website">
-  <img align="center" src="https://github-readme-stats.anuraghazra1.vercel.app/api/pin/?username=CThawngs&repo=Apple-Store-Website&theme=merko" />
-</a>
-<!--The Band-->
-<a href="https://github.com/CThawngs/The-Band">
-  <img align="center" src="https://github-readme-stats.anuraghazra1.vercel.app/api/pin/?username=CThawngs&repo=The-Band&theme=buefy" />
-</a>
-<!--Women's Day-->
-<a href="https://github.com/CThawngs/Women-Day">
-  <img align="center" src="https://github-readme-stats.anuraghazra1.vercel.app/api/pin/?username=CThawngs&repo=Women-Day&theme=synthwave" />
-</a>
-<!--Netflix-->
-<a href="https://github.com/CThawngs/Netflix">
-  <img align="center" src="https://github-readme-stats.anuraghazra1.vercel.app/api/pin/?username=CThawngs&repo=Netflix&theme=omni" />
-</a>
-<!--Gemini Chatbot-->
-<a href="https://github.com/CThawngs/Gemini-Chatbot">
-  <img align="center" src="https://github-readme-stats.anuraghazra1.vercel.app/api/pin/?username=CThawngs&repo=Gemini-Chatbot&theme=onedark" />
-</a>
-<!--Todo App-->
-<a href="https://github.com/CThawngs/Todo-App">
-  <img align="center" src="https://github-readme-stats.anuraghazra1.vercel.app/api/pin/?username=CThawngs&repo=Todo-App&theme=dark" />
-</a>
-<!--Nails - Hair Yến Nga-->
-<a href="https://github.com/CThawngs/Nails-Hair_Yen_Nga">
-  <img align="center" src="https://github-readme-stats.anuraghazra1.vercel.app/api/pin/?username=CThawngs&repo=Nails-Hair_Yen_Nga&theme=gruvbox_light" />
-</a>
+<br>
+
+<h3 align="center">~ $ cat about.md</h3>
+
+- 🎓 Second-year university student in **Ho Chi Minh City, Vietnam**, building real products while I study.
+- 🤖 **Solo founder of the Zero ecosystem**: AI-powered tools for note-taking, decision support and content automation.
+- ⚡ I work *AI-native*: I design, direct and review with agents (Claude Code, Codex, Cursor...) and ship fast.
+- 🧪 Currently building **[Zero-Council](https://github.com/CThawngs/Zero-Council)**, a multi-agent AI decision-support web app.
+- 🤝 Open to **internships and collaborations**. The quickest way to reach me is by [email](mailto:nguyenchithang2804@gmail.com).
+
+<br>
+
+<div align="center">
+
+<h3>~ $ ls skills/</h3>
+
+<img src="assets/skills.svg" width="860" alt="Skills: TypeScript, JavaScript, Python, C#, React, Next.js, Tailwind CSS, MySQL, SQLite, AI Agents, n8n, Make, Git, GitHub Actions and more">
+
+<br><br>
+
+<h3>~ $ ls projects/</h3>
+
+<table>
+  <tr>
+    <td><a href="https://github.com/CThawngs/Zero-Council"><img src="assets/projects/Zero-Council.svg" width="424" alt="Zero-Council — multi-agent AI decision-support web app"></a></td>
+    <td><a href="https://github.com/CThawngs/Netflix"><img src="assets/projects/Netflix.svg" width="424" alt="Netflix clone"></a></td>
+  </tr>
+  <tr>
+    <td><a href="https://github.com/CThawngs/Gemini-Chatbot"><img src="assets/projects/Gemini-Chatbot.svg" width="424" alt="Gemini Chatbot"></a></td>
+    <td><a href="https://github.com/CThawngs/Calculator"><img src="assets/projects/Calculator.svg" width="424" alt="Calculator"></a></td>
+  </tr>
+  <tr>
+    <td><a href="https://github.com/CThawngs/Apple-Store-Website"><img src="assets/projects/Apple-Store-Website.svg" width="424" alt="Apple Store website"></a></td>
+    <td><a href="https://github.com/CThawngs/Website-SuperCars-1-Page"><img src="assets/projects/Website-SuperCars-1-Page.svg" width="424" alt="SuperCars one-page website"></a></td>
+  </tr>
+  <tr>
+    <td><a href="https://github.com/CThawngs/The-Band"><img src="assets/projects/The-Band.svg" width="424" alt="The Band website"></a></td>
+    <td><a href="https://github.com/CThawngs/Nails-Hair_Yen_Nga"><img src="assets/projects/Nails-Hair_Yen_Nga.svg" width="424" alt="Nails and hair website for a client"></a></td>
+  </tr>
+  <tr>
+    <td><a href="https://github.com/CThawngs/Todo-App"><img src="assets/projects/Todo-App.svg" width="424" alt="Todo App in ReactJS"></a></td>
+    <td><a href="https://github.com/CThawngs/Women-Day"><img src="assets/projects/Women-Day.svg" width="424" alt="Women's Day animation"></a></td>
+  </tr>
+</table>
+
+<br>
+
+<h3>~ $ git log --heatmap</h3>
+
+<img src="assets/contrib-heatmap.svg" width="860" alt="GitHub contribution heatmap for the last year">
+
+<br><br>
+
+<h3>~ $ ls trophies/</h3>
+
+<img src="https://github-trophies.vercel.app/?username=CThawngs&theme=radical&no-frame=true&no-bg=true&margin-w=4&column=7" alt="GitHub trophies" width="860">
+
+<br>
+
+<a href="https://visitcount.itsvg.in"><img src="https://visitcount.itsvg.in/api?id=CThawngs&icon=1&color=8" alt="Profile views"></a>
+
+<img src="assets/footer.svg" width="100%" alt="Thanks for stopping by">
+
+</div>

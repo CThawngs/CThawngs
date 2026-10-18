@@ -383,42 +383,8 @@ def make_portrait_and_card(cfg):
 
 
 # ----------------------------------------------------------------------------------------------
-# SVG: experience timeline, skills, cards
+# SVG: skills, cards
 # ----------------------------------------------------------------------------------------------
-def make_experience(cfg):
-    W, x_rail, x_card = 860, 22, 46
-    ed = cfg["education"]
-    entries = [(e["role"], e["org"], e["period"], e["bullets"], T["teal"]) for e in cfg["experience"]]
-    entries.append((ed["major"], ed["school"], f"{ed['start']} – {ed['end']}",
-                    [f"Focus: {ed['focus']}.", f"GPA {ed['gpa']}."], T["violet"]))
-    y, boxes = 16, []
-    for role, org, period, bullets, color in entries:
-        lines = []
-        for b in bullets:
-            for k, l in enumerate(wrap_px(b, 12.5, W - x_card - 52)):
-                lines.append((k == 0, l))
-        h = 44 + len(lines) * 18 + 10
-        boxes.append((y, h, role, org, period, lines, color))
-        y += h + 12
-    H = y - 2
-    first_dot, last_dot = boxes[0][0] + 22, boxes[-1][0] + 22
-    out = [f'<line x1="{x_rail}" y1="{first_dot}" x2="{x_rail}" y2="{last_dot}" stroke="{T["border"]}" stroke-width="2"/>']
-    for i, (top, h, role, org, period, lines, color) in enumerate(boxes):
-        body = "".join(
-            (f'<text x="{x_card + 16}" y="{top + 52 + j * 18}" font-family="{SANS}" font-size="12.5" fill="{color}">•</text>' if first else "")
-            + f'<text x="{x_card + 30}" y="{top + 52 + j * 18}" font-family="{SANS}" font-size="12.5" fill="{T["muted"]}">{esc(l)}</text>'
-            for j, (first, l) in enumerate(lines))
-        out.append(
-            f'<circle cx="{x_rail}" cy="{top + 22}" r="6" fill="{T["panel"]}" stroke="{color}" stroke-width="2">'
-            + anim(f'animate attributeName="r" values="6;8;6" dur="3.2s" begin="{i * 0.4:.1f}s" repeatCount="indefinite"') + "</circle>"
-            f'<rect x="{x_card}" y="{top}" width="{W - x_card - 2}" height="{h}" rx="10" fill="{T["panel"]}" stroke="{T["border"]}"/>'
-            f'<rect x="{x_card}" y="{top + 10}" width="3" height="{h - 20}" rx="1.5" fill="{color}"/>'
-            f'<text x="{x_card + 16}" y="{top + 27}" font-family="{SANS}" font-size="15" font-weight="700" fill="{T["text"]}">{esc(role)} <tspan fill="{color}">· {esc(org)}</tspan></text>'
-            f'<text x="{W - 20}" y="{top + 27}" text-anchor="end" font-family="{MONO}" font-size="12" fill="{T["muted"]}">{esc(period)}</text>' + body)
-    label = "; ".join(f"{r} at {o} ({p})" for r, o, p, *_ in boxes)
-    write_svg("experience.svg", f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" role="img" aria-label="{esc(label)}">{"".join(out)}</svg>')
-
-
 def make_skills(cfg):
     W, fs, h, gap, label_w = 860, 13, 30, 10, 150
     pad_x, top = 20, 18  # keep rows inset from the panel edge on every side
@@ -511,7 +477,7 @@ def slug(s):
 # SVG: contribution heatmap + footer
 # ----------------------------------------------------------------------------------------------
 def make_heatmap(data):
-    W, CELL, GAP, LEFT, TOP = 860, 12, 3, 38, 58
+    W, CELL, GAP, LEFT, TOP = 860, 12, 3, 38, 30  # no title line: grid sits near the top
     palette = ["#161b22", "#0e4429", "#006d32", "#26a641", "#39d353"]
     placeholder = not data
     if placeholder:
@@ -558,7 +524,6 @@ def make_heatmap(data):
   <defs><clipPath id="gridclip"><rect x="{LEFT}" y="{TOP}" width="{grid_w - LEFT}" height="{7 * (CELL + GAP)}"/></clipPath>
   <linearGradient id="sweep" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset="0.5" stop-color="#7ee8d8" stop-opacity="0.22"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient></defs>
   <rect x="0.5" y="0.5" width="{W - 1}" height="{H - 1}" rx="12" fill="{T['panel']}" stroke="{T['border']}"/>
-  <text x="22" y="24" font-family="{MONO}" font-size="13" fill="{T['teal']}">$ git log --since="1 year ago" --heatmap</text>
   <g transform="translate({(W - grid_w) // 2 + 4} 0)">{ml}{dl}{''.join(cells)}{sweep}</g>
   <g>{legend}</g>{stats}
 </svg>""")
@@ -596,8 +561,11 @@ def build_blocks(cfg, repo_meta):
         f'<a href="{esc(b["url"])}"><img src="https://img.shields.io/badge/{urllib.parse.quote(b["label"])}-%23{b["color"]}.svg?style=for-the-badge&logo={urllib.parse.quote(b["logo"])}&logoColor=white" alt="{esc(b["label"])}"></a>'
         for b in cfg["badges"])
     owner = cfg["repos_owner"]
-    projects = [(p["url"] or cfg["links"]["portfolio"], f"assets/projects/{slug(p['title'])}.svg", f"{p['title']}: {p['description']}") for p in cfg["projects"]]
-    repos = [(f"https://github.com/{owner}/{r['name']}", f"assets/repos/{r['name']}.svg", f"{r['name']}: {repo_meta[r['name']]['description']}") for r in cfg["repos"]]
+    # portfolio projects and GitHub repos are one and the same showcase: one grid
+    cards = ([(p["url"] or cfg["links"]["portfolio"], f"assets/projects/{slug(p['title'])}.svg",
+               f"{p['title']}: {p['description']}") for p in cfg["projects"]]
+             + [(f"https://github.com/{owner}/{r['name']}", f"assets/repos/{r['name']}.svg",
+                 f"{r['name']}: {repo_meta[r['name']]['description']}") for r in cfg["repos"]])
     highlights = "\n".join(f"- **{h['title']}** ({h['date']}): {h['note']}" for h in cfg["highlights"])
     trophies = ""
     if cfg["trophies"]["enabled"]:
@@ -605,11 +573,9 @@ def build_blocks(cfg, repo_meta):
     counter = ""
     if cfg["visit_counter"]["enabled"]:
         counter = f'<a href="{esc(cfg["visit_counter"]["link"])}"><img src="{esc(cfg["visit_counter"]["url"])}" alt="Profile views"></a>\n'
-    ed = cfg["education"]
-    exp_alt = "; ".join(f"{e['role']} at {e['org']} ({e['period']})" for e in cfg["experience"]) + f"; {ed['major']} at {ed['school']} ({ed['start']}-{ed['end']})"
     skills_alt = "Skills: " + ", ".join(i for g in cfg["skills"] if g.get("show", True) for i in g["items"])
-    return {"badges": badges, "about": "\n".join("- " + a for a in cfg["about"]), "experience_alt": esc(exp_alt),
-            "skills_alt": esc(skills_alt), "projects_grid": grid(projects), "repos_grid": grid(repos),
+    return {"badges": badges, "about": "\n".join("- " + a for a in cfg["about"]),
+            "skills_alt": esc(skills_alt), "cards_grid": grid(cards),
             "highlights": highlights, "trophies": trophies, "counter": counter}
 
 
@@ -648,7 +614,6 @@ def main():
 
     make_header(cfg)
     make_portrait_and_card(cfg)
-    make_experience(cfg)
     make_skills(cfg)
     for p in cfg["projects"]:
         write_svg(f"projects/{slug(p['title'])}.svg", project_card(p, "view repo" if p["url"] else "details on portfolio"))

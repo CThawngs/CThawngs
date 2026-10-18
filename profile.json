@@ -55,9 +55,9 @@
     "greeting": "HI 👋  I'M",
     "roles": [
       "{{person.role}}",
+      "Full-stack Web Developer",
       "AI Agent & MCP Builder",
-      "Google AI-in-learning Trainer",
-      "{{education.major}} student"
+      "Vibe-coding with AI Agents"
     ]
   },
   "education": {
@@ -95,14 +95,6 @@
     [
       "Location",
       "{{person.location}}"
-    ],
-    [
-      "Education",
-      "{{education.school}} · {{education.start}}–{{education.end}}"
-    ],
-    [
-      "Latest",
-      "{{experience.0.role}} @ {{experience.0.org}}"
     ],
     [
       "Stack",

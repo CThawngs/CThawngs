@@ -20,19 +20,7 @@
 
 <br>
 
-<h3 align="center">About</h3>
-
-{{@about}}
-
-<br>
-
 <div align="center">
-
-<h3>Experience &amp; Education</h3>
-
-<img src="assets/experience.svg" width="860" alt="{{@experience_alt}}">
-
-<br><br>
 
 <h3>Skills</h3>
 
@@ -42,23 +30,7 @@
 
 <h3>Projects</h3>
 
-{{@projects_grid}}
-
-<br>
-
-<h3>Repositories</h3>
-
-{{@repos_grid}}
-
-<br>
-
-<h3>Certificates &amp; Achievements</h3>
-
-</div>
-
-{{@highlights}}
-
-<div align="center">
+{{@cards_grid}}
 
 <br>
 

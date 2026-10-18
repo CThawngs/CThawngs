@@ -78,8 +78,6 @@
 
 <br>
 
-<a href="https://visitcount.itsvg.in"><img src="https://visitcount.itsvg.in/api?id=CThawngs&icon=1&color=8" alt="Profile views"></a>
-
 <img src="assets/footer.svg" width="100%" alt="Thanks for stopping by">
 
 </div>

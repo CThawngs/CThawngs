@@ -256,6 +256,7 @@ def make_skills():
     top = 18
     x = pad_x
     y = top
+    row_y = top
     out, idx = [], 0
     for group, color, items in SKILLS:
         out.append(f'<text x="{pad_x}" y="{y+h/2+4:.0f}" font-family="{MONO}" font-size="12.5" fill="{MUTED}">{escape(group)}</text>')
@@ -276,7 +277,8 @@ def make_skills():
                        + f'<text x="{x+24:.0f}" y="{row_y+h/2+4.5}" font-family="{SANS}" font-size="{fs}" font-weight="600" fill="{TEXT}">{escape(it)}</text></g>')
             x += w + gap
         y = row_y + h + 20
-    H = y + top - 6  # mirror the top inset so the last row is not flush to the border
+    # row_y/h are the last row: inset the panel bottom by the same amount as the top
+    H = row_y + h + top
     # explicit dark panel: GitHub light theme would otherwise render light text
     # on white and wash the whole section out
     svg = (f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H:.0f}" viewBox="0 0 {W} {H:.0f}" role="img" '

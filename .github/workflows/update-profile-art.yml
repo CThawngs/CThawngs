@@ -11,6 +11,12 @@ on:
 permissions:
   contents: write
 
+# Serialize runs: a push-triggered run and a manual dispatch would otherwise
+# both commit and race, causing a non-fast-forward rejection.
+concurrency:
+  group: update-profile-art
+  cancel-in-progress: false
+
 jobs:
   heatmap:
     runs-on: ubuntu-latest

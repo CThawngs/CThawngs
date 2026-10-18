@@ -1,186 +1,163 @@
-[
- {
-  "name": "CThawngs",
-  "description": null,
+{
+ "CThawngs": {
+  "description": "",
   "language": "Python",
   "stars": 2,
-  "fork": false,
-  "archived": false
+  "forks": 0,
+  "is_template": false
  },
- {
-  "name": "Zero-Council",
-  "description": null,
+ "Zero-Council": {
+  "description": "",
   "language": "TypeScript",
   "stars": 2,
-  "fork": false,
-  "archived": false
+  "forks": 1,
+  "is_template": false
  },
- {
-  "name": "Portfolio",
-  "description": null,
+ "Portfolio": {
+  "description": "",
   "language": "TypeScript",
   "stars": 1,
-  "fork": false,
-  "archived": false
+  "forks": 0,
+  "is_template": false
  },
- {
-  "name": "Disk-Cleaner-MCP",
-  "description": null,
+ "Disk-Cleaner-MCP": {
+  "description": "",
   "language": "Rust",
   "stars": 1,
-  "fork": false,
-  "archived": false
+  "forks": 0,
+  "is_template": false
  },
- {
-  "name": "Zero-LLM",
+ "Zero-LLM": {
   "description": "Free LLM Provider & Model Directory with Real-time Updates A vibe-coded web application built entirely through Google AI Studio prompts, designed for the AI Riser Vietnam 2026 hackathon.",
   "language": "TypeScript",
   "stars": 0,
-  "fork": false,
-  "archived": false
+  "forks": 0,
+  "is_template": false
  },
- {
-  "name": "Gem-Forge",
+ "Gem-Forge": {
   "description": "Forge, refine, and instantly export optimized prompts for Google Gemini Gems. A premium React/Express Mini SaaS featuring Supabase, inline AI revision chat, multi-gateway payments (VietQR/Stripe/PayPal).",
   "language": "TypeScript",
   "stars": 1,
-  "fork": false,
-  "archived": false
+  "forks": 0,
+  "is_template": false
  },
- {
-  "name": "Apple-Store-Website",
+ "Apple-Store-Website": {
   "description": "This is just web design code according to the Apple Store website",
   "language": "HTML",
   "stars": 1,
-  "fork": false,
-  "archived": false
+  "forks": 0,
+  "is_template": true
  },
- {
-  "name": "Custom-Dataset-Deep-Learning",
-  "description": "This project is a custom dataset exercise for image recognition (animals) that I learned from Vi\u1ec7t Nguy\u1ec5n AI course",
+ "Custom-Dataset-Deep-Learning": {
+  "description": "This project is a custom dataset exercise for image recognition (animals) that I learned from Việt Nguyễn AI course",
   "language": "Python",
   "stars": 1,
-  "fork": false,
-  "archived": false
+  "forks": 0,
+  "is_template": false
  },
- {
-  "name": "Recognition-Exercise-Deep-Learning-",
-  "description": "This is the first assignment I did while studying the Deep Learning for Computer Vision course by Vietnamese YouTuber Vi\u1ec7t Nguy\u1ec5n AI.",
+ "Recognition-Exercise-Deep-Learning-": {
+  "description": "This is the first assignment I did while studying the Deep Learning for Computer Vision course by Vietnamese YouTuber Việt Nguyễn AI.",
   "language": "Python",
   "stars": 1,
-  "fork": false,
-  "archived": false
+  "forks": 0,
+  "is_template": false
  },
- {
-  "name": "The-Turning-Point-Game",
+ "The-Turning-Point-Game": {
   "description": "A pixel-art life simulation game 'vibe coded' during Tet 2026 using Google Antigravity AI. Navigate adult life, career, and mental health in this full-stack web experience built with React (Vite), FastAPI, and Supabase.",
   "language": "JavaScript",
   "stars": 1,
-  "fork": false,
-  "archived": false
+  "forks": 0,
+  "is_template": false
  },
- {
-  "name": "CO2-prediction",
+ "CO2-prediction": {
   "description": "This is the third project I've programmed while learning Viet Nguyen AI's Machine Learning course. On the other hand, this is the first project where I've been exposed to time series forecasting.",
   "language": "Python",
   "stars": 1,
-  "fork": false,
-  "archived": false
+  "forks": 0,
+  "is_template": false
  },
- {
-  "name": "Job-Level-Predictor",
-  "description": "This is the second project I learned in Vi\u1ec7t Nguy\u1ec5n AI's course to understand the foundation of Machine Learning working.",
+ "Job-Level-Predictor": {
+  "description": "This is the second project I learned in Việt Nguyễn AI's course to understand the foundation of Machine Learning working.",
   "language": "Python",
   "stars": 1,
-  "fork": false,
-  "archived": false
+  "forks": 0,
+  "is_template": false
  },
- {
-  "name": "Student-Score-Prediction-using-Machine-Learning",
-  "description": "This is the first project I learned in Vi\u1ec7t Nguy\u1ec5n AI's course to understand the foundation of Machine Learning working.",
+ "Student-Score-Prediction-using-Machine-Learning": {
+  "description": "This is the first project I learned in Việt Nguyễn AI's course to understand the foundation of Machine Learning working.",
   "language": "Python",
   "stars": 1,
-  "fork": false,
-  "archived": false
+  "forks": 0,
+  "is_template": false
  },
- {
-  "name": "Courses-Apps-Cyclone",
+ "Courses-Apps-Cyclone": {
   "description": "This is my first project coded from my company's Figma design during my internship",
   "language": "HTML",
   "stars": 1,
-  "fork": false,
-  "archived": false
+  "forks": 0,
+  "is_template": false
  },
- {
-  "name": "Todo-App",
+ "Todo-App": {
   "description": "This is the first task using ReactJS in my internship",
   "language": "JavaScript",
   "stars": 1,
-  "fork": false,
-  "archived": false
+  "forks": 0,
+  "is_template": false
  },
- {
-  "name": "Nails-Hair_Yen_Nga",
+ "Nails-Hair_Yen_Nga": {
   "description": "This is a practical nails-hair website I developed for my client",
   "language": "HTML",
   "stars": 1,
-  "fork": false,
-  "archived": false
+  "forks": 0,
+  "is_template": false
  },
- {
-  "name": "Gigabyte",
+ "Gigabyte": {
   "description": "This is a website using PHP and integrated database (Project in my school)",
   "language": "PHP",
   "stars": 1,
-  "fork": false,
-  "archived": false
+  "forks": 0,
+  "is_template": false
  },
- {
-  "name": "Gemini-Chatbot",
+ "Gemini-Chatbot": {
   "description": "This is a website that integrates AI chatbot by calling its API",
   "language": "JavaScript",
   "stars": 1,
-  "fork": false,
-  "archived": false
+  "forks": 0,
+  "is_template": true
  },
- {
-  "name": "Netflix",
+ "Netflix": {
   "description": "Modern, responsive Netflix clone showcasing dynamic design and AI-enhanced coding",
   "language": "CSS",
   "stars": 2,
-  "fork": false,
-  "archived": false
+  "forks": 0,
+  "is_template": false
  },
- {
-  "name": "The-Band",
-  "description": null,
+ "The-Band": {
+  "description": "",
   "language": "CSS",
   "stars": 1,
-  "fork": false,
-  "archived": false
+  "forks": 0,
+  "is_template": false
  },
- {
-  "name": "Women-Day",
+ "Women-Day": {
   "description": "Happy October 20th with image of glowing pink clouds and hearts falling like rain.",
   "language": "CSS",
   "stars": 1,
-  "fork": false,
-  "archived": false
+  "forks": 0,
+  "is_template": false
  },
- {
-  "name": "Calculator",
+ "Calculator": {
   "description": "Calculator Website: A user-friendly web app for quick and basic arithmetic calculations, including addition, subtraction, multiplication, and division.",
   "language": "CSS",
   "stars": 1,
-  "fork": false,
-  "archived": false
+  "forks": 0,
+  "is_template": false
  },
- {
-  "name": "Website-SuperCars-1-Page",
-  "description": null,
+ "Website-SuperCars-1-Page": {
+  "description": "",
   "language": "HTML",
   "stars": 3,
-  "fork": false,
-  "archived": false
+  "forks": 0,
+  "is_template": false
  }
-]
+}

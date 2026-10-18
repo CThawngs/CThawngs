@@ -1,0 +1,419 @@
+{
+  "person": {
+    "name": "Chi Thang",
+    "full_name": "Nguyen Chi Thang",
+    "handle": "CThawngs",
+    "role": "AI Automation Engineer",
+    "location": "Ho Chi Minh City, Vietnam",
+    "email": "nguyenchithang2804@gmail.com",
+    "status": "open to internships & collaborations"
+  },
+  "links": {
+    "github": "https://github.com/CThawngs",
+    "portfolio": "https://nguyen-chi-thang-portfolio.vercel.app/",
+    "linkedin": "https://www.linkedin.com/in/cthawngs/",
+    "instagram": "https://www.instagram.com/cthawngs2804/",
+    "email": "mailto:{{person.email}}"
+  },
+  "badges": [
+    {
+      "label": "Portfolio",
+      "color": "000000",
+      "logo": "vercel",
+      "url": "{{links.portfolio}}"
+    },
+    {
+      "label": "LinkedIn",
+      "color": "0077B5",
+      "logo": "linkedin",
+      "url": "{{links.linkedin}}"
+    },
+    {
+      "label": "Instagram",
+      "color": "E4405F",
+      "logo": "Instagram",
+      "url": "{{links.instagram}}"
+    },
+    {
+      "label": "Email",
+      "color": "D14836",
+      "logo": "Gmail",
+      "url": "{{links.email}}"
+    }
+  ],
+  "theme": {
+    "teal": "#2dd4bf",
+    "violet": "#a78bfa",
+    "pink": "#f472b6",
+    "blue": "#60a5fa",
+    "panel": "#0b1020",
+    "border": "#30363d",
+    "text": "#e6edf3",
+    "muted": "#8b949e"
+  },
+  "hero": {
+    "greeting": "HI 👋  I'M",
+    "roles": [
+      "{{person.role}}",
+      "AI Agent & MCP Builder",
+      "Google AI-in-learning Trainer",
+      "{{education.major}} student"
+    ]
+  },
+  "education": {
+    "school": "Ly Tu Trong College",
+    "major": "Information Technology",
+    "focus": "Artificial Intelligence & Software Engineering",
+    "start": "2022",
+    "end": "2027",
+    "gpa": "3.6/4.0"
+  },
+  "ai_agents": [
+    "Claude Code",
+    "Codex",
+    "Cursor",
+    "Hermes",
+    "DeepSeek Harness",
+    "Antigravity"
+  ],
+  "stack_highlights": [
+    "Python",
+    "JavaScript",
+    "C#",
+    "ReactJS",
+    "Next.js"
+  ],
+  "info_card": [
+    [
+      "Name",
+      "{{person.full_name}} ({{person.handle}})"
+    ],
+    [
+      "Role",
+      "{{person.role}}"
+    ],
+    [
+      "Location",
+      "{{person.location}}"
+    ],
+    [
+      "Education",
+      "{{education.school}} · {{education.start}}–{{education.end}}"
+    ],
+    [
+      "Latest",
+      "{{experience.0.role}} @ {{experience.0.org}}"
+    ],
+    [
+      "Stack",
+      "{{stack_highlights|join}}"
+    ],
+    [
+      "AI Agents",
+      "{{ai_agents|join:4}}"
+    ],
+    [
+      "Focus",
+      "AI agents · MCP · automation"
+    ],
+    [
+      "Contact",
+      "{{person.email}}"
+    ]
+  ],
+  "about": [
+    "🎓 **{{education.major}}** student at **{{education.school}}** ({{education.start}}–{{education.end}}), focusing on {{education.focus}}. GPA {{education.gpa}}.",
+    "🏢 **{{experience.0.role}}** ({{experience.0.period}}): {{experience.0.summary}}",
+    "🎤 **{{experience.1.role}}** ({{experience.1.period}}): {{experience.1.summary}}",
+    "🏆 {{highlights.0.title}}: {{highlights.0.note}}",
+    "🧰 Built **[{{projects.0.title}}]({{links.portfolio}})**: {{projects.0.description}}",
+    "🌐 Full résumé, experience and certificates on my **[portfolio]({{links.portfolio}})**.",
+    "🤝 {{person.status|cap}}. The quickest way to reach me is by [email]({{links.email}})."
+  ],
+  "experience": [
+    {
+      "org": "Google",
+      "role": "Google Developer Intern",
+      "period": "7/2026 – 9/2026",
+      "summary": "designed an AI Agent Operating System in Notion (via Notion MCP) connecting 6+ AI agents.",
+      "bullets": [
+        "Designed and implemented an AI Agent Operating System (AI OS) in Notion, integrating Notion MCP to connect 6+ AI agents ({{ai_agents|join}}). The system serves as both a centralized knowledge warehouse (skills, rules, LLM wikis, memories) and an autonomous project management hub (auto-generating projects, tasks, specs, and weekly reports).",
+        "Built an MCP tool for AI-powered disk cleanup.",
+        "Formed a team to compete in the AI Riser Vietnam 2026 (Google Hackathon) and ranked among the top 200 teams in Vietnam."
+      ]
+    },
+    {
+      "org": "Google",
+      "role": "Google Student Ambassador Trainer",
+      "period": "2/2026 – 6/2026",
+      "summary": "led GenAI workshops at HCMC universities, teaching prompt engineering to 500+ students.",
+      "bullets": [
+        "Spearheaded GenAI workshops across HCMC universities, delivering Prompt Engineering training and driving AI adoption for 500+ diverse students.",
+        "Designed and configured specialized AI Agents to automate tasks and optimize workflows for end-users.",
+        "Deployed n8n automation workflows for email systems while processing and managing operational datasets for 500+ participants.",
+        "Collaborated via Google Workspace/Office 365 and integrated AI tools to automate reporting, significantly accelerating project delivery."
+      ]
+    },
+    {
+      "org": "Apps Cyclone",
+      "role": "Frontend Developer Intern",
+      "period": "6/2025 – 8/2025",
+      "summary": "built website interfaces with ReactJS.",
+      "bullets": [
+        "Learn and use ReactJS to develop website interfaces based on existing.",
+        "Build a to-do list website with basic CRUD functionality using ReactJS."
+      ]
+    },
+    {
+      "org": "TBay",
+      "role": "WordPress Developer Intern",
+      "period": "5/2025 – 7/2025",
+      "summary": "learned to build websites with WordPress.",
+      "bullets": [
+        "Learn to build websites using WordPress."
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "group": "Programming Languages",
+      "color": "#2dd4bf",
+      "items": [
+        "C# (.Net)",
+        "C",
+        "C++",
+        "JavaScript",
+        "PHP",
+        "Python",
+        "Java"
+      ]
+    },
+    {
+      "group": "Web & Frameworks",
+      "color": "#60a5fa",
+      "items": [
+        "ReactJS",
+        "Next.js 15",
+        "HTML",
+        "CSS",
+        "Tailwind CSS",
+        "RESTful APIs"
+      ]
+    },
+    {
+      "group": "Data",
+      "color": "#fbbf24",
+      "items": [
+        "MySQL",
+        "SQLite"
+      ]
+    },
+    {
+      "group": "Automation",
+      "color": "#a78bfa",
+      "items": [
+        "n8n",
+        "Make"
+      ]
+    },
+    {
+      "group": "Developer Tools",
+      "color": "#34d399",
+      "items": [
+        "Git",
+        "GitHub",
+        "GitHub Actions (CI/CD)",
+        "Notion API",
+        "AI Agent"
+      ]
+    },
+    {
+      "group": "Design",
+      "color": "#f472b6",
+      "items": [
+        "Canva",
+        "Adobe Photoshop",
+        "Google Stitch",
+        "AI for Creative"
+      ]
+    },
+    {
+      "group": "Soft Skills",
+      "color": "#fb923c",
+      "show": false,
+      "items": [
+        "Teamwork",
+        "Communication",
+        "Problem-solving",
+        "Adaptability",
+        "Leadership",
+        "Critical thinking",
+        "Self-learning"
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "title": "Disk Cleaner MCP",
+      "date": "25/09/2026",
+      "description": "A Rust-based MCP server that gives AI agents (Hermes, Claude, Cursor, OpenClaw, Codex) the ability to scan, analyze, organize and safely clean junk files on Windows, macOS and Linux.",
+      "tags": [
+        "Artificial Intelligence",
+        "Website",
+        "Coding",
+        "Git"
+      ],
+      "url": "https://github.com/CThawngs/Disk-Cleaner-MCP"
+    },
+    {
+      "title": "Zero AI Note",
+      "date": "01/07/2026 – 25/09/2026",
+      "description": "Next-generation intelligent knowledge note platform: multi-modal AI Agent models automatically analyze, extract and convert mixed documents into deeply structured note systems for learning, research and knowledge management.",
+      "tags": [
+        "Website",
+        "Front-end",
+        "Back-end",
+        "Coding"
+      ],
+      "url": "https://github.com/CThawngs/Zero-AI-Note"
+    },
+    {
+      "title": "Portfolio",
+      "date": "06/06/2026",
+      "description": "Fully automated AI-powered CMS that turns a Notion database into a live portfolio website — add a project in Notion and it appears, translated into English and Vietnamese by an AI bot.",
+      "tags": [
+        "Notion",
+        "Artificial Intelligence",
+        "GitHub"
+      ],
+      "url": "https://github.com/CThawngs/Portfolio"
+    },
+    {
+      "title": "Custom Dataset Deep Learning",
+      "date": "30/03/2026",
+      "description": "Custom dataset exercise for image recognition (animals): build the dataset myself instead of using a pre-made template — assignment from the Deep Learning cơ bản course by Việt Nguyễn AI.",
+      "tags": [
+        "Artificial Intelligence",
+        "Deep Learning",
+        "Data",
+        "GitHub"
+      ],
+      "url": "https://github.com/CThawngs/Custom-Dataset-Deep-Learning"
+    },
+    {
+      "title": "Recognition Exercise Deep Learning",
+      "date": "18/03/2026",
+      "description": "Baseline image recognition on Google QuickDraw 28×28 data using average-image prototypes and dot-product similarity — first assignment of the Deep Learning for Computer Vision course.",
+      "tags": [
+        "Artificial Intelligence",
+        "Deep Learning",
+        "Coding",
+        "GitHub"
+      ],
+      "url": "https://github.com/CThawngs/Recognition-Exercise-Deep-Learning-"
+    },
+    {
+      "title": "The Turning Point Game Website",
+      "date": "12/02/2026",
+      "description": "Pixel-art life simulation game vibe-coded with Google Antigravity during Lunar New Year (Tet) 2026: balance career, mental health and relationships through narrative choices.",
+      "tags": [
+        "Website",
+        "Front-end",
+        "Back-end",
+        "Coding"
+      ],
+      "url": "https://github.com/CThawngs/The-Turning-Point-Game"
+    }
+  ],
+  "repos_owner": "CThawngs",
+  "repos": [
+    {
+      "name": "Zero-Council",
+      "fallback_description": "Multi-agent AI decision-support web app."
+    },
+    {
+      "name": "Netflix"
+    },
+    {
+      "name": "Gemini-Chatbot"
+    },
+    {
+      "name": "Calculator"
+    },
+    {
+      "name": "Apple-Store-Website"
+    },
+    {
+      "name": "Website-SuperCars-1-Page",
+      "fallback_description": "One-page SuperCars website built with HTML."
+    },
+    {
+      "name": "The-Band",
+      "fallback_description": "Responsive band website built with HTML and CSS."
+    },
+    {
+      "name": "Nails-Hair_Yen_Nga"
+    },
+    {
+      "name": "Todo-App"
+    },
+    {
+      "name": "Women-Day"
+    }
+  ],
+  "lang_colors": {
+    "TypeScript": "#3178c6",
+    "JavaScript": "#f1e05a",
+    "CSS": "#9b6bd6",
+    "HTML": "#e34c26",
+    "Python": "#3572a5",
+    "Rust": "#dea584",
+    "C#": "#178600",
+    "Java": "#b07219",
+    "PHP": "#4f5d95"
+  },
+  "highlights": [
+    {
+      "title": "AI Riser Vietnam 2026 (Google Hackathon)",
+      "date": "01/10/2026",
+      "note": "Ranked among the top 200 nationwide in the Google Vibe Coding competition, leveraging Google AI Studio, Google Stitch, and Google Antigravity."
+    },
+    {
+      "title": "GSA Trainer",
+      "date": "15/06/2026",
+      "note": "Certificate awarded by Google for the journey to become a trainer on AI application in learning and work, specifically for students across Vietnam."
+    },
+    {
+      "title": "Selling on e-commerce platforms with Gemini (Gemini Academy)",
+      "date": "15/06/2026",
+      "note": "Certificate received upon completing the course “Bứt phá cùng AI”, organized by Google in collaboration with NIC."
+    },
+    {
+      "title": "Support Individual Growth and Development",
+      "date": "16/10/2026",
+      "note": "Certificate issued by Google through a course on Coursera."
+    },
+    {
+      "title": "Set and Achieve Team Goals",
+      "date": "13/10/2026",
+      "note": "Certificate issued by Google through a course on Coursera."
+    },
+    {
+      "title": "Create a High-Performing Team",
+      "date": "09/10/2026",
+      "note": "Certificate issued by Google through a course on Coursera."
+    }
+  ],
+  "trophies": {
+    "enabled": true,
+    "url": "https://github-trophies.vercel.app/?username={{person.handle}}&theme=radical&no-frame=true&no-bg=true&margin-w=4&column=7"
+  },
+  "visit_counter": {
+    "enabled": false,
+    "url": "https://visitcount.itsvg.in/api?id={{person.handle}}&icon=1&color=8",
+    "link": "https://visitcount.itsvg.in"
+  },
+  "footer": {
+    "text": "thanks for stopping by — let's build something together ✦"
+  }
+}

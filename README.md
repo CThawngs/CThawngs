@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="assets/header.svg" width="100%" alt="Chí Thắng (CThawngs) — Solo AI Product Builder · Full-stack Web Developer">
+<img src="assets/header.svg" width="100%" alt="Solo AI Product Builder · Full-stack Web Developer">
 
 <br>
 
@@ -13,7 +13,7 @@
 <table>
   <tr>
     <td valign="top"><img src="assets/ascii-portrait.svg" alt="ASCII portrait of Chí Thắng"></td>
-    <td valign="top"><img src="assets/info-card.svg" alt="Chí Thắng — Solo AI product builder and student in Ho Chi Minh City, Vietnam"></td>
+    <td valign="top"><img src="assets/info-card.svg" alt="Chí Thắng — Solo AI Product Builder · Full-stack Web Developer"></td>
   </tr>
 </table>
 
@@ -21,7 +21,7 @@
 
 <br>
 
-<h3 align="center">~ $ cat about.md</h3>
+<h3 align="center">About</h3>
 
 - 🎓 Second-year university student in **Ho Chi Minh City, Vietnam**, building real products while I study.
 - 🤖 **Solo founder of the Zero ecosystem**: AI-powered tools for note-taking, decision support and content automation.
@@ -33,46 +33,31 @@
 
 <div align="center">
 
-<h3>~ $ ls skills/</h3>
+<h3>Skills</h3>
 
-<img src="assets/skills.svg" width="860" alt="Skills: TypeScript, JavaScript, Python, C#, React, Next.js, Tailwind CSS, MySQL, SQLite, AI Agents, n8n, Make, Git, GitHub Actions and more">
+<img src="assets/skills.svg" width="860" alt="Skills">
 
 <br><br>
 
-<h3>~ $ ls projects/</h3>
+<h3>Projects</h3>
 
 <table>
-  <tr>
-    <td><a href="https://github.com/CThawngs/Zero-Council"><img src="assets/projects/Zero-Council.svg" width="424" alt="Zero-Council — multi-agent AI decision-support web app"></a></td>
-    <td><a href="https://github.com/CThawngs/Netflix"><img src="assets/projects/Netflix.svg" width="424" alt="Netflix clone"></a></td>
-  </tr>
-  <tr>
-    <td><a href="https://github.com/CThawngs/Gemini-Chatbot"><img src="assets/projects/Gemini-Chatbot.svg" width="424" alt="Gemini Chatbot"></a></td>
-    <td><a href="https://github.com/CThawngs/Calculator"><img src="assets/projects/Calculator.svg" width="424" alt="Calculator"></a></td>
-  </tr>
-  <tr>
-    <td><a href="https://github.com/CThawngs/Apple-Store-Website"><img src="assets/projects/Apple-Store-Website.svg" width="424" alt="Apple Store website"></a></td>
-    <td><a href="https://github.com/CThawngs/Website-SuperCars-1-Page"><img src="assets/projects/Website-SuperCars-1-Page.svg" width="424" alt="SuperCars one-page website"></a></td>
-  </tr>
-  <tr>
-    <td><a href="https://github.com/CThawngs/The-Band"><img src="assets/projects/The-Band.svg" width="424" alt="The Band website"></a></td>
-    <td><a href="https://github.com/CThawngs/Nails-Hair_Yen_Nga"><img src="assets/projects/Nails-Hair_Yen_Nga.svg" width="424" alt="Nails and hair website for a client"></a></td>
-  </tr>
-  <tr>
-    <td><a href="https://github.com/CThawngs/Todo-App"><img src="assets/projects/Todo-App.svg" width="424" alt="Todo App in ReactJS"></a></td>
-    <td><a href="https://github.com/CThawngs/Women-Day"><img src="assets/projects/Women-Day.svg" width="424" alt="Women's Day animation"></a></td>
-  </tr>
+  <tr><td><a href="https://github.com/CThawngs/Zero-Council"><img src="assets/projects/Zero-Council.svg" width="424" alt="Zero-Council"></a></td><td><a href="https://github.com/CThawngs/Netflix"><img src="assets/projects/Netflix.svg" width="424" alt="Netflix"></a></td></tr>
+  <tr><td><a href="https://github.com/CThawngs/Gemini-Chatbot"><img src="assets/projects/Gemini-Chatbot.svg" width="424" alt="Gemini-Chatbot"></a></td><td><a href="https://github.com/CThawngs/Calculator"><img src="assets/projects/Calculator.svg" width="424" alt="Calculator"></a></td></tr>
+  <tr><td><a href="https://github.com/CThawngs/Apple-Store-Website"><img src="assets/projects/Apple-Store-Website.svg" width="424" alt="Apple-Store-Website"></a></td><td><a href="https://github.com/CThawngs/Website-SuperCars-1-Page"><img src="assets/projects/Website-SuperCars-1-Page.svg" width="424" alt="Website-SuperCars-1-Page"></a></td></tr>
+  <tr><td><a href="https://github.com/CThawngs/The-Band"><img src="assets/projects/The-Band.svg" width="424" alt="The-Band"></a></td><td><a href="https://github.com/CThawngs/Nails-Hair_Yen_Nga"><img src="assets/projects/Nails-Hair_Yen_Nga.svg" width="424" alt="Nails-Hair_Yen_Nga"></a></td></tr>
+  <tr><td><a href="https://github.com/CThawngs/Todo-App"><img src="assets/projects/Todo-App.svg" width="424" alt="Todo-App"></a></td><td><a href="https://github.com/CThawngs/Women-Day"><img src="assets/projects/Women-Day.svg" width="424" alt="Women-Day"></a></td></tr>
 </table>
 
 <br>
 
-<h3>~ $ git log --heatmap</h3>
+<h3>Contributions</h3>
 
 <img src="assets/contrib-heatmap.svg" width="860" alt="GitHub contribution heatmap for the last year">
 
 <br><br>
 
-<h3>~ $ ls trophies/</h3>
+<h3>Achievements</h3>
 
 <img src="https://github-trophies.vercel.app/?username=CThawngs&theme=radical&no-frame=true&no-bg=true&margin-w=4&column=7" alt="GitHub trophies" width="860">
 

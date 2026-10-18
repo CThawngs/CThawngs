@@ -6,7 +6,9 @@ on:
   workflow_dispatch:           # Actions tab -> Run workflow
   push:
     branches: [main]
-    paths: ["scripts/fetch_contributions.py", "scripts/render_heatmap_svg.py"]
+    paths:
+      - "scripts/**"
+      - "data/profile.json"
 
 permissions:
   contents: write
@@ -32,7 +34,16 @@ jobs:
           GITHUB_USER: CThawngs
       - name: Render heatmap
         run: python scripts/render_heatmap_svg.py
+      # Project cards need the heavy image stack; skip them on CI so the daily
+      # run stays cheap. Descriptions come from the API, so the README grid
+      # stays accurate even between asset rebuilds.
+      - name: Refresh repo metadata
+        run: python scripts/fetch_repos.py
+        env:
+          GITHUB_USER: CThawngs
+      - name: Rebuild README
+        run: python scripts/make_readme.py
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "chore: refresh contribution heatmap [skip ci]"
-          file_pattern: "data/contributions.json assets/contrib-heatmap.svg"
+          commit_message: "chore: refresh profile data [skip ci]"
+          file_pattern: "data/contributions.json data/repos.json assets/contrib-heatmap.svg README.md"

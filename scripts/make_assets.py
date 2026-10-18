@@ -6,10 +6,12 @@ never breaks when an external API is down or rate-limited.
 
 Usage:  python scripts/make_assets.py            # animated
         STATIC=1 python scripts/make_assets.py   # frozen frames (for previews)
-Edit the CONFIG block below, re-run, commit the files in assets/.
+Config lives in data/profile.json + data/repos.json - edit those, re-run,
+commit assets/.
 """
-import os
 import math
+import os
+import sys
 import textwrap
 from html import escape
 from pathlib import Path
@@ -17,55 +19,25 @@ from pathlib import Path
 import numpy as np
 from PIL import Image, ImageFilter, ImageOps
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from profile_config import pins, profile
+
 ROOT = Path(__file__).resolve().parent.parent
 ASSETS = ROOT / "assets"
 (ASSETS / "projects").mkdir(parents=True, exist_ok=True)
 STATIC = os.environ.get("STATIC") == "1"
 
 # --------------------------------------------------------------------------
-# CONFIG - edit freely
+# CONFIG lives in data/profile.json + data/repos.json - see profile_config.py
 # --------------------------------------------------------------------------
-NAME = "Chí Thắng"
-HANDLE = "CThawngs"
-ROLES = [
-    "Solo AI Product Builder",
-    "Full-stack Web Developer",
-    "Vibe-coding with AI Agents",
-    "Student from Ho Chi Minh City",
-]
-CARD_ROWS = [  # (key, value)  - keep values <= ~50 characters
-    ("Name", "Chí Thắng (CThawngs)"),
-    ("Role", "Solo AI product builder · Student"),
-    ("Location", "Ho Chi Minh City, Vietnam"),
-    ("Now", "Zero Council · multi-agent AI decision app"),
-    ("Prev", "ReactJS internship · client web projects"),
-    ("Stack", "TypeScript · Next.js · React · Python · C#"),
-    ("AI Tools", "Claude Code · Hermes · Codex · Cursor"),
-    ("Focus", "AI agents · automation · web apps"),
-    ("Contact", "nguyenchithang2804@gmail.com"),
-]
-SKILLS = [  # (group, colour, items)
-    ("Languages", "#2dd4bf", ["TypeScript", "JavaScript", "Python", "C#", "C", "C++", "Java", "PHP"]),
-    ("Web & Frameworks", "#60a5fa", ["React", "Next.js", "Tailwind CSS", "HTML", "CSS", "REST APIs"]),
-    ("Data", "#fbbf24", ["MySQL", "SQLite"]),
-    ("AI & Automation", "#a78bfa", ["AI Agents", "Claude Code", "n8n", "Make", "Notion API"]),
-    ("Design", "#f472b6", ["Canva", "Photoshop", "Google Stitch"]),
-    ("Dev Tools", "#34d399", ["Git", "GitHub", "GitHub Actions (CI/CD)"]),
-]
-# (repo, description, language, template?)
-# (repo, description, language, template?, featured?)
-PROJECTS = [
-    ("Zero-Council", "Multi-agent AI decision-support web app. My primary university specialized project (Đồ án Chuyên ngành).", "TypeScript", False, True),
-    ("Netflix", "Modern, responsive Netflix clone showcasing dynamic design and AI-enhanced coding.", "CSS", False, False),
-    ("Gemini-Chatbot", "A website that integrates an AI chatbot by calling the Gemini API.", "JavaScript", True, False),
-    ("Calculator", "User-friendly web app for quick, basic arithmetic: add, subtract, multiply, divide.", "CSS", False, False),
-    ("Apple-Store-Website", "Web design code recreating the look and feel of the Apple Store website.", "HTML", True, False),
-    ("Website-SuperCars-1-Page", "One-page website showcasing supercars with a bold visual layout.", "HTML", False, False),
-    ("The-Band", "Band website built with HTML and CSS: a clean, responsive landing page.", "CSS", False, False),
-    ("Nails-Hair_Yen_Nga", "Practical nails & hair website I developed for a real client.", "HTML", False, False),
-    ("Todo-App", "My first task using ReactJS during my internship.", "JavaScript", False, False),
-    ("Women-Day", "Happy October 20th: glowing pink clouds with hearts falling like rain.", "CSS", False, False),
-]
+P = profile()
+NAME = P["name"]
+HANDLE = P["user"]
+ROLES = P["roles"]
+CARD_ROWS = P["card_rows"]
+SKILLS = [tuple(g) for g in P["skills"]]
+# (repo, description, language, template?, featured?) - text comes from GitHub
+PROJECTS = pins(P)
 LANG_COLORS = {"TypeScript": "#3178c6", "JavaScript": "#f1e05a", "CSS": "#9b6bd6",
                "HTML": "#e34c26", "Python": "#3572a5"}
 
@@ -312,10 +284,13 @@ def make_skills():
 # --------------------------------------------------------------------------
 def card_svg(name, desc, lang, template, w, h, featured=False):
     wrap = 52
-    lines = textwrap.wrap(desc, wrap)[:3]
+    lines = textwrap.wrap(desc, wrap)[:3] if desc else []
     dlines = "".join(f'<text x="22" y="{58 + i*19}" font-family="{SANS}" font-size="13" fill="{MUTED}">{escape(l)}</text>'
                      for i, l in enumerate(lines))
     lc = LANG_COLORS.get(lang, MUTED)
+    lang_svg = (f'<circle cx="26" cy="{h-22}" r="5.5" fill="{lc}"/>'
+                f'<text x="38" y="{h-17.5}" font-family="{SANS}" font-size="12" fill="{MUTED}">{escape(lang)}</text>'
+                ) if lang else ""
     tag = ""
     if template:
         tag = (f'<rect x="{w-92}" y="14" width="70" height="20" rx="10" fill="none" stroke="{BORDER}"/>'
@@ -333,15 +308,21 @@ def card_svg(name, desc, lang, template, w, h, featured=False):
   <text x="46" y="27" font-family="{SANS}" font-size="{16 if featured else 15}" font-weight="700" fill="{BLUE}">{escape(name)}</text>
   {tag}
   {dlines}
-  <circle cx="26" cy="{h-22}" r="5.5" fill="{lc}"/>
-  <text x="38" y="{h-17.5}" font-family="{SANS}" font-size="12" fill="{MUTED}">{escape(lang)}</text>
+  {lang_svg}
   <text x="{w-22}" y="{h-17.5}" text-anchor="end" font-family="{MONO}" font-size="12" fill="{TEAL}">view repo ↗</text>
 </svg>"""
 
 
 def make_projects():
+    keep = set()
     for name, desc, lang, tpl, feat in PROJECTS:
         write(ASSETS / "projects" / f"{name}.svg", card_svg(name, desc, lang, tpl, 424, 132, featured=feat))
+        keep.add(f"{name}.svg")
+    # drop cards for repos no longer pinned, so assets never outlive the config
+    for stale in (ASSETS / "projects").glob("*.svg"):
+        if stale.name not in keep:
+            stale.unlink()
+            print("removed stale", stale.relative_to(ROOT))
 
 
 # --------------------------------------------------------------------------

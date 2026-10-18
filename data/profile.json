@@ -1,0 +1,166 @@
+{
+  "desc_overrides": {},
+  "user": "CThawngs",
+  "name": "Chí Thắng",
+  "tagline": "Solo AI Product Builder · Full-stack Web Developer",
+  "socials": [
+    {
+      "label": "Instagram",
+      "url": "https://www.instagram.com/cthawngs2804/",
+      "color": "%23E4405F",
+      "logo": "Instagram"
+    },
+    {
+      "label": "LinkedIn",
+      "url": "https://www.linkedin.com/in/cthawngs/",
+      "color": "%230077B5",
+      "logo": "linkedin"
+    },
+    {
+      "label": "Email",
+      "url": "mailto:nguyenchithang2804@gmail.com",
+      "color": "%23D14836",
+      "logo": "Gmail"
+    }
+  ],
+  "roles": [
+    "Solo AI Product Builder",
+    "Full-stack Web Developer",
+    "Vibe-coding with AI Agents",
+    "Student from Ho Chi Minh City"
+  ],
+  "card_rows": [
+    [
+      "Name",
+      "Chí Thắng (CThawngs)"
+    ],
+    [
+      "Role",
+      "Solo AI product builder · Student"
+    ],
+    [
+      "Location",
+      "Ho Chi Minh City, Vietnam"
+    ],
+    [
+      "Now",
+      "Zero Council · multi-agent AI decision app"
+    ],
+    [
+      "Prev",
+      "ReactJS internship · client web projects"
+    ],
+    [
+      "Stack",
+      "TypeScript · Next.js · React · Python · C#"
+    ],
+    [
+      "AI Tools",
+      "Claude Code · Hermes · Codex · Cursor"
+    ],
+    [
+      "Focus",
+      "AI agents · automation · web apps"
+    ],
+    [
+      "Contact",
+      "nguyenchithang2804@gmail.com"
+    ]
+  ],
+  "about": [
+    "🎓 Second-year university student in **Ho Chi Minh City, Vietnam**, building real products while I study.",
+    "🤖 **Solo founder of the Zero ecosystem**: AI-powered tools for note-taking, decision support and content automation.",
+    "⚡ I work *AI-native*: I design, direct and review with agents (Claude Code, Codex, Cursor...) and ship fast.",
+    "🧪 Currently building **[Zero-Council](https://github.com/CThawngs/Zero-Council)**, a multi-agent AI decision-support web app.",
+    "🤝 Open to **internships and collaborations**. The quickest way to reach me is by [email](mailto:nguyenchithang2804@gmail.com)."
+  ],
+  "skills": [
+    [
+      "Languages",
+      "#2dd4bf",
+      [
+        "TypeScript",
+        "JavaScript",
+        "Python",
+        "C#",
+        "C",
+        "C++",
+        "Java",
+        "PHP"
+      ]
+    ],
+    [
+      "Web & Frameworks",
+      "#60a5fa",
+      [
+        "React",
+        "Next.js",
+        "Tailwind CSS",
+        "HTML",
+        "CSS",
+        "REST APIs"
+      ]
+    ],
+    [
+      "Data",
+      "#fbbf24",
+      [
+        "MySQL",
+        "SQLite"
+      ]
+    ],
+    [
+      "AI & Automation",
+      "#a78bfa",
+      [
+        "AI Agents",
+        "Claude Code",
+        "n8n",
+        "Make",
+        "Notion API"
+      ]
+    ],
+    [
+      "Design",
+      "#f472b6",
+      [
+        "Canva",
+        "Photoshop",
+        "Google Stitch"
+      ]
+    ],
+    [
+      "Dev Tools",
+      "#34d399",
+      [
+        "Git",
+        "GitHub",
+        "GitHub Actions (CI/CD)"
+      ]
+    ]
+  ],
+  "pins": [
+    "Zero-Council",
+    "Netflix",
+    "Gemini-Chatbot",
+    "Calculator",
+    "Apple-Store-Website",
+    "Website-SuperCars-1-Page",
+    "The-Band",
+    "Nails-Hair_Yen_Nga",
+    "Todo-App",
+    "Women-Day"
+  ],
+  "featured": "Zero-Council",
+  "templates": [
+    "Gemini-Chatbot",
+    "Apple-Store-Website"
+  ],
+  "sections": {
+    "about": "About",
+    "skills": "Skills",
+    "projects": "Projects",
+    "contributions": "Contributions",
+    "achievements": "Achievements"
+  }
+}

@@ -15,6 +15,9 @@ concurrency:
   group: build-profile
   cancel-in-progress: false
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -27,7 +30,24 @@ jobs:
         run: python build.py
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: "chore: rebuild profile [skip ci]"
-          file_pattern: "README.md assets data"
+      - name: Commit and push (rebase + retry if main moved while building)
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add README.md assets data
+          if git diff --cached --quiet; then
+            echo "Nothing to commit."
+            exit 0
+          fi
+          git commit -m "chore: rebuild profile [skip ci]"
+          for attempt in 1 2 3 4 5; do
+            # during a rebase, "theirs" is our freshly generated commit, so generated files win
+            if git pull --rebase -X theirs origin main && git push origin HEAD:main; then
+              exit 0
+            fi
+            echo "Push attempt $attempt failed, retrying..."
+            git rebase --abort 2>/dev/null || true
+            sleep $((attempt * 3))
+          done
+          echo "Could not push after 5 attempts." >&2
+          exit 1

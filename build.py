@@ -16,6 +16,7 @@ import math
 import os
 import re
 import sys
+import urllib.error
 import urllib.parse
 import urllib.request
 from datetime import date, datetime, timedelta
@@ -149,6 +150,33 @@ def http_get(url, headers=None, timeout=25):
     req = urllib.request.Request(url, headers={"User-Agent": "profile-readme-builder", **(headers or {})})
     with urllib.request.urlopen(req, timeout=timeout) as r:
         return r.read().decode("utf-8", "replace")
+
+
+def github_repo_ref(url):
+    """'https://github.com/owner/repo' -> 'owner/repo'; None if it is not a GitHub repo link."""
+    if not url:
+        return None
+    m = re.match(r"https?://github\.com/([^/\s]+)/([^/\s#?]+)", url)
+    return f"{m.group(1)}/{m.group(2)[:-4] if m.group(2).endswith('.git') else m.group(2)}" if m else None
+
+
+def check_project_links(cfg):
+    """Online mode: a project whose GitHub repo answers 404 (private or deleted) falls back to
+    the portfolio link, so the README never links to a page that 404s."""
+    for p in cfg["projects"]:
+        ref = github_repo_ref(p.get("url"))
+        if not ref:
+            continue
+        try:
+            http_get(f"https://api.github.com/repos/{ref}", headers={"Accept": "application/vnd.github+json"})
+        except urllib.error.HTTPError as e:
+            if e.code == 404:
+                warn(f"project '{p['title']}': github.com/{ref} returned 404 (private or deleted) - using the portfolio link")
+                p["url"] = None
+            else:
+                warn(f"project '{p['title']}': GitHub API returned HTTP {e.code} for {ref} - keeping the configured URL")
+        except Exception as e:
+            warn(f"project '{p['title']}': could not reach the GitHub API for {ref} ({e.__class__.__name__}) - keeping the configured URL")
 
 
 # ----------------------------------------------------------------------------------------------
@@ -514,6 +542,9 @@ def main():
         sys.exit(f"profile.json error: {e.args[0]}")
     T = cfg["theme"]
     print("Building profile ...")
+
+    if not OFFLINE:
+        check_project_links(cfg)
 
     make_header(cfg)
     make_portrait_and_card(cfg)

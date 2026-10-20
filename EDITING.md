@@ -23,3 +23,7 @@ Sau khi sửa và commit lên `main`, GitHub Actions tự chạy `build.py` và 
 Chạy thử trên máy: `python build.py` (không cần cài gì thêm). **Không sửa tay `README.md` hay `assets/`**, chúng bị ghi đè mỗi lần build.
 
 Heatmap tự làm mới mỗi ngày. Đổi ảnh chân dung ASCII (tuỳ chọn): xem `tools/make_portrait.py`.
+
+Link của project: đặt `"url": "https://github.com/owner/repo"` (hoặc `null` = không có repo, card sẽ trỏ về portfolio).
+Khi build online, `build.py` kiểm tra từng link GitHub: repo trả **404** (private hoặc đã xoá) sẽ bị cảnh báo và card tự trỏ về
+link portfolio — nên không bao giờ có link chết trên README. Muốn bỏ qua kiểm tra: `python build.py --offline`.

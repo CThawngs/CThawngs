@@ -263,7 +263,8 @@
         "Coding",
         "Git"
       ],
-      "url": "https://github.com/CThawngs/Disk-Cleaner-MCP"
+      "url": "https://github.com/CThawngs/Disk-Cleaner-MCP",
+      "visibility": "open-source"
     },
     {
       "title": "Zero AI Note",
@@ -275,7 +276,9 @@
         "Back-end",
         "Coding"
       ],
-      "url": null
+      "url": null,
+      "visibility": "private",
+      "site": "https://zero-ai-note.vercel.app/"
     },
     {
       "title": "Portfolio",
@@ -286,7 +289,8 @@
         "Artificial Intelligence",
         "GitHub"
       ],
-      "url": "https://github.com/CThawngs/Portfolio"
+      "url": "https://github.com/CThawngs/Portfolio",
+      "visibility": "open-source"
     },
     {
       "title": "Custom Dataset Deep Learning",
@@ -298,7 +302,8 @@
         "Data",
         "GitHub"
       ],
-      "url": "https://github.com/CThawngs/Custom-Dataset-Deep-Learning"
+      "url": "https://github.com/CThawngs/Custom-Dataset-Deep-Learning",
+      "visibility": "open-source"
     },
     {
       "title": "Recognition Exercise Deep Learning",
@@ -310,7 +315,8 @@
         "Coding",
         "GitHub"
       ],
-      "url": "https://github.com/CThawngs/Recognition-Exercise-Deep-Learning-"
+      "url": "https://github.com/CThawngs/Recognition-Exercise-Deep-Learning-",
+      "visibility": "open-source"
     },
     {
       "title": "The Turning Point Game Website",
@@ -322,7 +328,8 @@
         "Back-end",
         "Coding"
       ],
-      "url": "https://github.com/CThawngs/The-Turning-Point-Game"
+      "url": "https://github.com/CThawngs/The-Turning-Point-Game",
+      "visibility": "open-source"
     }
   ],
   "repos_owner": "CThawngs",

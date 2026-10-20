@@ -161,9 +161,12 @@ def github_repo_ref(url):
 
 
 def check_project_links(cfg):
-    """Online mode: a project whose GitHub repo answers 404 (private or deleted) falls back to
-    the portfolio link, so the README never links to a page that 404s."""
+    """Online mode: an open-source project whose GitHub repo answers 404 (deleted, or turned
+    private) falls back to the portfolio link, so the README never links to a page that 404s.
+    Closed-source projects are not checked: they link to their deployed site, not to a repo."""
     for p in cfg["projects"]:
+        if p.get("visibility") == "private":
+            continue
         ref = github_repo_ref(p.get("url"))
         if not ref:
             continue
@@ -177,6 +180,18 @@ def check_project_links(cfg):
                 warn(f"project '{p['title']}': GitHub API returned HTTP {e.code} for {ref} - keeping the configured URL")
         except Exception as e:
             warn(f"project '{p['title']}': could not reach the GitHub API for {ref} ({e.__class__.__name__}) - keeping the configured URL")
+
+
+def project_link(cfg, p):
+    """(href, label) for a project card.
+
+    closed source -> the deployed site (site), open source -> the GitHub repo (url),
+    nothing usable -> the portfolio."""
+    if p.get("visibility") == "private":
+        site = p.get("site")
+        return (site, "view site") if site else (cfg["links"]["portfolio"], "details on portfolio")
+    url = p.get("url")
+    return (url, "view repo") if url else (cfg["links"]["portfolio"], "details on portfolio")
 
 
 # ----------------------------------------------------------------------------------------------
@@ -411,9 +426,15 @@ def project_card(proj, link_label):
         tags += (f'<rect x="{x:.0f}" y="{h - 52}" width="{tww:.0f}" height="20" rx="10" fill="{T["violet"]}" fill-opacity="0.12" stroke="{T["violet"]}" stroke-opacity="0.45"/>'
                  f'<text x="{x + tww / 2:.0f}" y="{h - 38}" text-anchor="middle" font-family="{SANS}" font-size="10.5" fill="{T["text"]}">{esc(tag)}</text>')
         x += tww + 6
+    # classification pill on the date line (right): open source vs closed source
+    closed = proj.get("visibility") == "private"
+    vlabel, vcolor = ("closed source", T["pink"]) if closed else ("open source", T["teal"])
+    vw = tw(vlabel, 10) + 16
+    badge = (f'<rect x="{w - 22 - vw:.0f}" y="33" width="{vw:.0f}" height="19" rx="9.5" fill="{vcolor}" fill-opacity="0.12" stroke="{vcolor}" stroke-opacity="0.5"/>'
+             f'<text x="{w - 22 - vw / 2:.0f}" y="47" text-anchor="middle" font-family="{SANS}" font-size="10" fill="{vcolor}">{esc(vlabel)}</text>')
     inner = (f'<text x="46" y="27" font-family="{SANS}" font-size="15" font-weight="700" fill="{T["blue"]}">{esc(proj["title"])}</text>'
              f'<text x="22" y="47" font-family="{MONO}" font-size="11" fill="{T["muted"]}">{esc(proj["date"])}</text>'
-             f'{desc}{tags}<text x="{w - 22}" y="{h - 14}" text-anchor="end" font-family="{MONO}" font-size="12" fill="{T["teal"]}">{esc(link_label)} ↗</text>')
+             f'{badge}{desc}{tags}<text x="{w - 22}" y="{h - 14}" text-anchor="end" font-family="{MONO}" font-size="12" fill="{T["teal"]}">{esc(link_label)} ↗</text>')
     return card_frame(w, h, f"{proj['title']}: {proj['description']}", inner, 7)
 
 
@@ -509,7 +530,7 @@ def build_blocks(cfg):
         f'<a href="{esc(b["url"])}"><img src="https://img.shields.io/badge/{urllib.parse.quote(b["label"])}-%23{b["color"]}.svg?style=for-the-badge&logo={urllib.parse.quote(b["logo"])}&logoColor=white" alt="{esc(b["label"])}"></a>'
         for b in cfg["badges"])
     # the Projects grid shows the portfolio's featured projects, capped at 6
-    cards = [(p["url"] or cfg["links"]["portfolio"], f"assets/projects/{slug(p['title'])}.svg",
+    cards = [(project_link(cfg, p)[0], f"assets/projects/{slug(p['title'])}.svg",
               f"{p['title']}: {p['description']}") for p in cfg["projects"][:6]]
     trophies = ""
     if cfg["trophies"]["enabled"]:
@@ -552,7 +573,7 @@ def main():
     make_header(cfg)
     make_portrait_and_card(cfg)
     for p in cfg["projects"][:6]:
-        write_svg(f"projects/{slug(p['title'])}.svg", project_card(p, "view repo" if p["url"] else "details on portfolio"))
+        write_svg(f"projects/{slug(p['title'])}.svg", project_card(p, project_link(cfg, p)[1]))
     make_heatmap(get_contributions(cfg["person"]["handle"]) if not OFFLINE else read_json(DATA / "contributions.json", None))
     make_footer(cfg)
     render_readme(cfg, build_blocks(cfg))

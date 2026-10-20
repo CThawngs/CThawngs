@@ -354,13 +354,16 @@ def make_portrait_and_card(cfg):
   <g font-family="{MONO}" font-size="10" fill="url(#pg)">{"".join(texts)}</g>
 </svg>""")
 
-    # ---- info card: just the key/value rows, centred between chrome bar and bottom
+    # ---- info card: key/value rows fill the frame - equal top/bottom padding, line height from what is left
     x_key, x_val = 24, 126
     maxw = CARD_W - x_val - 18
-    y0 = CHROME_H + max((H - CHROME_H - len(rows) * CARD_LH) // 2, 24)
+    pad = 22
+    fs = CARD_FS
+    lh = max((H - CHROME_H - 2 * pad - fs) / max(len(rows) - 1, 1), fs * 1.6)
+    y0 = CHROME_H + pad + fs * 0.85
     out = []
     for i, (k, v) in enumerate(rows):
-        y, begin = y0 + i * CARD_LH, 0.5 + i * 0.16
+        y, begin = y0 + i * lh, 0.5 + i * 0.16
         v2 = fit(v, CARD_FS, maxw)
         if v2 != v:
             warn(f"info_card '{k}' is too long and was shortened: {v}")

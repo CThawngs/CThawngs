@@ -109,6 +109,14 @@
       "AI agents · MCP · automation"
     ],
     [
+      "Status",
+      "{{person.status}}"
+    ],
+    [
+      "Portfolio",
+      "{{links.portfolio}}"
+    ],
+    [
       "Contact",
       "{{person.email}}"
     ]

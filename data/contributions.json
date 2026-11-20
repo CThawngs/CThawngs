@@ -1845,11 +1845,16 @@
    "date": "2026-11-19",
    "count": 14,
    "level": 1
+  },
+  {
+   "date": "2026-11-20",
+   "count": 15,
+   "level": 2
   }
  ],
- "total": 1156,
+ "total": 1171,
  "longest_streak": 46,
- "current_streak": 4,
+ "current_streak": 5,
  "best_day": "2026-08-26",
  "best_count": 57
 }

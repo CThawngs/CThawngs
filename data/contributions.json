@@ -2,41 +2,6 @@
  "user": "CThawngs",
  "days": [
   {
-   "date": "2025-11-16",
-   "count": 0,
-   "level": 0
-  },
-  {
-   "date": "2025-11-17",
-   "count": 0,
-   "level": 0
-  },
-  {
-   "date": "2025-11-18",
-   "count": 0,
-   "level": 0
-  },
-  {
-   "date": "2025-11-19",
-   "count": 0,
-   "level": 0
-  },
-  {
-   "date": "2025-11-20",
-   "count": 0,
-   "level": 0
-  },
-  {
-   "date": "2025-11-21",
-   "count": 0,
-   "level": 0
-  },
-  {
-   "date": "2025-11-22",
-   "count": 0,
-   "level": 0
-  },
-  {
    "date": "2025-11-23",
    "count": 0,
    "level": 0
@@ -1855,11 +1820,16 @@
    "date": "2026-11-21",
    "count": 19,
    "level": 2
+  },
+  {
+   "date": "2026-11-22",
+   "count": 21,
+   "level": 2
   }
  ],
- "total": 1195,
+ "total": 1216,
  "longest_streak": 46,
- "current_streak": 6,
+ "current_streak": 7,
  "best_day": "2026-08-26",
  "best_count": 57
 }
